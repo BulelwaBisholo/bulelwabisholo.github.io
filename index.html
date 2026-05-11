@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bulelwa Bisholo | Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f1923;
+    --cream: #f5f0e8;
+    --teal: #0d9488;
+    --teal-light: #14b8a6;
+    --gold: #c9a84c;
+    --muted: #6b7280;
+    --card-bg: #ffffff;
+    --border: #e5e0d8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 1.2rem 2.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted);
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 3rem 5rem 5rem;
+    position: relative; z-index: 2;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--teal); color: white;
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0.4rem 1rem;
+    border-radius: 2rem; margin-bottom: 1.5rem;
+    width: fit-content;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-tag::before { content: '●'; font-size: 0.5rem; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    font-weight: 900; line-height: 1.05;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--teal);
+  }
+  .hero-bio {
+    font-size: 1.05rem; line-height: 1.7; color: #4b5563;
+    max-width: 480px; margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn {
+    padding: 0.8rem 1.8rem; border-radius: 0.4rem;
+    font-size: 0.9rem; font-weight: 500; cursor: pointer;
+    text-decoration: none; transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-primary {
+    background: var(--ink); color: var(--cream);
+    border: 2px solid var(--ink);
+  }
+  .btn-primary:hover { background: var(--teal); border-color: var(--teal); }
+  .btn-outline {
+    background: transparent; color: var(--ink);
+    border: 2px solid var(--ink);
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--cream); }
+
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    padding: 5rem 5rem 5rem 2rem;
+    position: relative;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-card {
+    background: var(--ink); color: var(--cream);
+    border-radius: 1.5rem; padding: 2.5rem;
+    width: 100%; max-width: 380px;
+    position: relative; overflow: hidden;
+    box-shadow: 0 30px 60px rgba(15,25,35,0.2);
+  }
+  .hero-card::before {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: var(--teal); opacity: 0.15;
+    border-radius: 50%;
+  }
+  .hero-card-label {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--teal-light); margin-bottom: 0.5rem;
+  }
+  .hero-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem;
+  }
+  .hero-card-role { color: #9ca3af; font-size: 0.9rem; margin-bottom: 2rem; }
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin-bottom: 2rem;
+  }
+  .stat {
+    background: rgba(255,255,255,0.06);
+    border-radius: 0.8rem; padding: 1rem;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 700; color: var(--teal-light);
+  }
+  .stat-label { font-size: 0.72rem; color: #9ca3af; margin-top: 0.2rem; }
+  .hero-tools {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .tool-tag {
+    background: rgba(13,148,136,0.2); color: var(--teal-light);
+    font-size: 0.72rem; padding: 0.3rem 0.7rem;
+    border-radius: 2rem; border: 1px solid rgba(13,148,136,0.3);
+  }
+
+  /* SECTION SHARED */
+  section { padding: 6rem 5rem; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--teal); font-weight: 600; margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 800;
+    line-height: 1.15; margin-bottom: 3rem;
+  }
+  .section-title em { font-style: italic; color: var(--teal); }
+
+  /* ABOUT */
+  .about { background: var(--ink); color: var(--cream); }
+  .about .section-label { color: var(--teal-light); }
+  .about .section-title { color: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start; }
+  .about-text p {
+    font-size: 1rem; line-height: 1.8; color: #d1d5db; margin-bottom: 1.2rem;
+  }
+  .about-text p strong { color: var(--teal-light); font-weight: 500; }
+  .certs { display: flex; flex-direction: column; gap: 1rem; }
+  .cert-item {
+    display: flex; align-items: center; gap: 1rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 0.8rem; padding: 1rem 1.2rem;
+    transition: border-color 0.2s;
+  }
+  .cert-item:hover { border-color: var(--teal); }
+  .cert-icon {
+    width: 40px; height: 40px; border-radius: 0.5rem;
+    background: rgba(13,148,136,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+  }
+  .cert-name { font-size: 0.9rem; font-weight: 500; color: var(--cream); }
+  .cert-org { font-size: 0.75rem; color: #9ca3af; }
+
+  /* SKILLS */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .skill-card {
+    background: white; border-radius: 1rem; padding: 1.8rem;
+    border: 1px solid var(--border);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  }
+  .skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(15,25,35,0.08);
+    border-color: var(--teal);
+  }
+  .skill-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .skill-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem;
+  }
+  .skill-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+  .skill-bar-wrap { margin-top: 1rem; background: var(--border); border-radius: 2rem; height: 4px; }
+  .skill-bar { height: 4px; border-radius: 2rem; background: var(--teal); }
+
+  /* PROJECTS */
+  .projects { background: var(--cream); }
+  .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .project-card {
+    background: white; border-radius: 1.2rem;
+    border: 1px solid var(--border); overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(15,25,35,0.1);
+  }
+  .project-header {
+    background: var(--ink); padding: 2rem;
+    position: relative; overflow: hidden;
+  }
+  .project-header::after {
+    content: attr(data-icon);
+    position: absolute; right: 1.5rem; top: 50%; transform: translateY(-50%);
+    font-size: 3.5rem; opacity: 0.15;
+  }
+  .project-num {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--teal-light); margin-bottom: 0.5rem;
+  }
+  .project-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; color: white; font-weight: 700;
+  }
+  .project-body { padding: 1.8rem; }
+  .project-desc { font-size: 0.9rem; line-height: 1.7; color: #4b5563; margin-bottom: 1.2rem; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+  .tag {
+    font-size: 0.72rem; padding: 0.25rem 0.65rem;
+    border-radius: 2rem; background: #f0fdf4;
+    color: var(--teal); border: 1px solid #a7f3d0;
+  }
+  .project-link {
+    font-size: 0.85rem; font-weight: 500; color: var(--teal);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 0.7rem; }
+
+  /* CONTACT */
+  .contact { background: var(--ink); color: var(--cream); text-align: center; }
+  .contact .section-label { color: var(--teal-light); }
+  .contact .section-title { color: var(--cream); max-width: 600px; margin: 0 auto 1rem; }
+  .contact-sub { color: #9ca3af; margin-bottom: 3rem; font-size: 1rem; }
+  .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.9rem 1.6rem; border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--cream); text-decoration: none; font-size: 0.9rem;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { background: var(--teal); border-color: var(--teal); }
+
+  /* FOOTER */
+  footer {
+    background: #080f16; color: #6b7280;
+    text-align: center; padding: 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 6rem 2rem 2rem; }
+    .hero-right { padding: 2rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid { grid-template-columns: 1fr; }
+    section { padding: 4rem 2rem; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+  }
+  @media (max-width: 500px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 2.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Bulelwa Bisholo</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-tag">Available for opportunities</div>
+    <h1>Data Analyst<br>with a <em>financial</em><br>edge.</h1>
+    <p class="hero-bio">
+      Transitioning from accounting & financial services into data analytics — combining deep financial domain knowledge with modern data skills to uncover insights that actually move the needle.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-label">Profile</div>
+      <h2>Bulelwa Bisholo</h2>
+      <div class="hero-card-role">Junior Data Analyst · Cape Town, SA</div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Certifications</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">307K</div>
+          <div class="stat-label">Rows Analysed</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">SQL</div>
+          <div class="stat-label">Primary Tool</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">FinTech</div>
+          <div class="stat-label">Target Sector</div>
+        </div>
+      </div>
+      <div class="hero-tools">
+        <span class="tool-tag">MySQL</span>
+        <span class="tool-tag">Power BI</span>
+        <span class="tool-tag">Excel</span>
+        <span class="tool-tag">Python</span>
+        <span class="tool-tag">GitHub</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <div class="section-label">About Me</div>
+      <h2 class="section-title">Finance background.<br><em>Data-driven</em> future.</h2>
+      <p>
+        I bring something rare to data analytics: <strong>years of real-world financial services experience</strong>. I don't just know how to query a database — I know what the numbers mean in a business context.
+      </p>
+      <p>
+        My journey into data analytics is intentional and structured. I'm building a portfolio that demonstrates not just technical skills, but the ability to translate data findings into financial insights that stakeholders actually care about.
+      </p>
+      <p>
+        Currently targeting junior data analyst roles in <strong>banking, investment, and financial services</strong> across South Africa and beyond, with a focus on organisations where data-driven decision-making is at the core.
+      </p>
+    </div>
+    <div class="certs reveal">
+      <div class="section-label" style="color: #6b7280; margin-bottom: 1.2rem;">Certifications</div>
+      <div class="cert-item">
+        <div class="cert-icon">🎓</div>
+        <div>
+          <div class="cert-name">Data Science Certificate</div>
+          <div class="cert-org">ALX Africa</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">💻</div>
+        <div>
+          <div class="cert-name">Full Stack Development</div>
+          <div class="cert-org">FNB (First National Bank)</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">📊</div>
+        <div>
+          <div class="cert-name">Power BI Data Analyst</div>
+          <div class="cert-org">Microsoft (In Progress)</div>
+        </div>
+      </div>
+      <div class="cert-item">
+        <div class="cert-icon">🏦</div>
+        <div>
+          <div class="cert-name">Accounting & Financial Services</div>
+          <div class="cert-org">Professional Background</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label reveal">Skills</div>
+  <h2 class="section-title reveal">Tools I work <em>with.</em></h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">🗄️</div>
+      <div class="skill-name">SQL / MySQL</div>
+      <div class="skill-desc">Complex queries, CTEs, window functions, stored procedures, and EDA on large financial datasets.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width: 75%"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Power BI</div>
+      <div class="skill-desc">Interactive dashboards, DAX measures, data modelling, and visual storytelling via Power BI Service.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width: 55%"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📗</div>
+      <div class="skill-name">Excel</div>
+      <div class="skill-desc">VLOOKUP, HLOOKUP, INDEX/MATCH, pivot tables, and financial modelling fundamentals.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width: 60%"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🐍</div>
+      <div class="skill-name">Python</div>
+      <div class="skill-desc">Data manipulation with Pandas, visualisation with Matplotlib and Seaborn for EDA workflows.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width: 40%"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🐙</div>
+      <div class="skill-name">GitHub</div>
+      <div class="skill-desc">Version control, portfolio documentation, and collaborative project management.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width: 65%"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🏦</div>
+      <div class="skill-name">Financial Domain</div>
+      <div class="skill-desc">Credit risk, financial reporting, accounting principles — the context behind the data.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" style="width: 90%"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-label reveal">Portfolio</div>
+  <h2 class="section-title reveal">Projects that tell <em>a story.</em></h2>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-header" data-icon="🏦">
+        <div class="project-num">Project 01</div>
+        <div class="project-title">Home Credit Default Risk — SQL EDA</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">
+          End-to-end exploratory data analysis on 307,000+ loan applications. Built a multi-CTE risk scoring model assigning APPROVE / REVIEW / REJECT decisions. Identified age group default patterns and flagged a significant data anomaly in DAYS_EMPLOYED.
+        </p>
+        <div class="project-tags">
+          <span class="tag">MySQL</span>
+          <span class="tag">CTEs</span>
+          <span class="tag">Window Functions</span>
+          <span class="tag">Risk Scoring</span>
+          <span class="tag">EDA</span>
+        </div>
+        <a href="https://github.com/BulelwaBisholo/data-analytics-sql-projects" target="_blank" class="project-link">View on GitHub →</a>
+      </div>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-header" data-icon="📊">
+        <div class="project-num">Project 02</div>
+        <div class="project-title">Home Credit — Power BI Dashboard</div>
+      </div>
+      <div class="project-body">
+        <p class="project-desc">
+          Interactive Power BI dashboard visualising default risk patterns, income distributions, and client segmentation from the Home Credit dataset. Built on Power BI Service for cross-platform accessibility.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">DAX</span>
+          <span class="tag">Data Modelling</span>
+          <span class="tag">Dashboard</span>
+        </div>
+        <a href="https://github.com/BulelwaBisholo/data-analytics-sql-projects" target="_blank" class="project-link">Coming Soon →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Let's build something <em>together.</em></h2>
+  <p class="contact-sub">Open to junior data analyst roles in financial services across South Africa and beyond.</p>
+  <div class="contact-links">
+    <a href="https://github.com/BulelwaBisholo/data-analytics-sql-projects" target="_blank" class="contact-link">
+      <span>🐙</span> GitHub
+    </a>
+    <a href="https://www.linkedin.com/in/bulelwabisholo" target="_blank" class="contact-link">
+      <span>💼</span> LinkedIn
+    </a>
+    <a href="mailto:bulelwabisholo@gmail.com" class="contact-link">
+      <span>✉️</span> Email Me
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Bulelwa Bisholo · Built with purpose, not just code.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
