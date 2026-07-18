@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Customer Churn Analysis — Bulelwa Bisholo</title>
+<meta name="description" content="Case study: Customer Churn Analysis by Bulelwa Bisholo, Junior Data Analyst." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/project.css" />
+</head>
+<body>
+
+<div class="preloader" data-preloader aria-hidden="true">
+  <div class="preloader-mark">
+    <svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="preloader-path" d="M2 32 L18 20 L30 26 L46 8 L62 16" />
+    </svg>
+    <span class="preloader-label">Loading case study…</span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="container">
+    <a href="../index.html" class="nav-logo"><span class="dot">●</span> Bulelwa Bisholo</a>
+    <nav class="nav-links" data-nav-links>
+      <a href="../index.html#home">Home</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#process">Process</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="nav-burger" data-nav-burger aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================ PROJECT HERO ============================ -->
+  <section class="project-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="../index.html#projects">Case Studies</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg>
+        <span>Customer Churn Analysis</span>
+      </div>
+
+      <div class="project-hero-top">
+        <div>
+          <p class="eyebrow">Case Study 02 · Customer Retention</p>
+          <h1>Customer Churn Analysis</h1>
+          <p class="project-subtitle">
+            Identifying which South African bank customers are most likely to churn —
+            and why — so the retention team can act before they leave, not after.
+          </p>
+          <div class="project-meta-row">
+            <span class="tool-chip secondary">SQL (MySQL)</span>
+            <span class="tool-chip secondary">Power BI</span>
+          </div>
+        </div>
+        <div class="project-hero-case" aria-hidden="true">02</div>
+      </div>
+
+      <div class="project-hero-actions">
+        <a href="https://github.com/BulelwaBisholo" class="btn btn-primary" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.8 5.4.8 11.7c0 5 3.2 9.2 7.7 10.7.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.4.1-3 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.7.1 3 .7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.7-5.7 7.7-10.7C23.2 5.4 18.3.5 12 .5Z"/></svg>
+          View Repository on GitHub
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PROJECT BODY ============================ -->
+  <section class="project-body">
+    <div class="container">
+      <div class="project-layout">
+
+        <!-- STICKY TABLE OF CONTENTS -->
+        <aside class="project-toc">
+          <span class="toc-label">On this page</span>
+          <ol>
+            <li><a href="#business-problem">Business Problem</a></li>
+            <li><a href="#stakeholder-request">Stakeholder Request</a></li>
+            <li><a href="#business-objectives">Business Objectives</a></li>
+            <li><a href="#dataset-overview">Dataset Overview</a></li>
+            <li><a href="#data-cleaning">Data Cleaning</a></li>
+            <li><a href="#analysis-process">Analysis Process</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#key-insights">Key Insights</a></li>
+            <li><a href="#business-impact">Business Impact</a></li>
+            <li><a href="#recommendations">Recommendations</a></li>
+            <li><a href="#technologies-used">Technologies Used</a></li>
+            <li><a href="#repository">GitHub Repository</a></li>
+          </ol>
+        </aside>
+
+        <div class="project-content">
+
+          <!-- 1. BUSINESS PROBLEM -->
+          <article class="case-section" id="business-problem">
+            <div class="case-section-head">
+              <span class="case-section-num">01</span>
+              <h2>Business Problem</h2>
+            </div>
+            <div class="case-section-body">
+              <p>
+                South African retail banks lose revenue every time a customer closes an
+                account or moves to a competitor — and by the time attrition shows up in
+                a high-level retention report, it's often too late to intervene. The
+                retention team could see <em>that</em> customers were leaving, but had no
+                systematic way to see <em>which</em> customers were most likely to leave
+                next, or why.
+              </p>
+            </div>
+          </article>
+
+          <!-- 2. STAKEHOLDER REQUEST -->
+          <article class="case-section" id="stakeholder-request">
+            <div class="case-section-head">
+              <span class="case-section-num">02</span>
+              <h2>Stakeholder Request</h2>
+            </div>
+            <div class="case-section-body">
+              <p>
+                The Head of Customer Retention asked for an analysis that went beyond a
+                single "churn rate" number: which customer profiles were actually driving
+                attrition, and whether those patterns held true across the bank's different
+                provinces, employment segments and product lines — so the retention team
+                could prioritise outreach where it would have the most impact, instead of
+                treating every at-risk customer the same way.
+              </p>
+            </div>
+          </article>
+          <article class="case-section" id="business-objectives">
+            <div class="case-section-head">
+              <span class="case-section-num">03</span>
+              <h2>Business Objectives</h2>
+            </div>
+            <div class="case-section-body">
+              <ul class="objectives-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Quantify the overall customer churn rate across the full 15,000-customer base.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Identify which demographic and financial factors — province, gender, age, employment status, credit score, tenure, product count and account balance — are most strongly associated with churn.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Combine the strongest predictors into a single, composite risk score that segments customers by how likely they are to churn.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Package the findings into an interactive Power BI dashboard the retention team can filter and explore without needing to write SQL themselves.</span>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 4. DATASET -->
+          <article class="case-section" id="dataset-overview">
+            <div class="case-section-head">
+              <span class="case-section-num">04</span>
+              <h2>Dataset Overview</h2>
+            </div>
+            <div class="case-section-body">
+              <div class="dataset-grid">
+                <div class="dataset-stat">
+                  <span class="label">Source</span>
+                  <span class="value">Synthetic (self-generated)</span>
+                </div>
+                <div class="dataset-stat">
+                  <span class="label">Rows</span>
+                  <span class="value">15,000</span>
+                </div>
+                <div class="dataset-stat">
+                  <span class="label">Columns</span>
+                  <span class="value">15</span>
+                </div>
+                <div class="dataset-stat">
+                  <span class="label">Format</span>
+                  <span class="value">CSV</span>
+                </div>
+              </div>
+              <p>
+                Each row represents one South African retail banking customer, combining
+                demographics (age, gender, province, education level), financial profile
+                (account balance, estimated salary, credit score), relationship data
+                (tenure, number of products held, credit card ownership) and the churn
+                outcome. The dataset was synthesised in Google Colab (Python — Pandas
+                &amp; NumPy), with churn logic deliberately embedded around employment
+                status, credit score, account balance, product count and tenure — so
+                the analysis could focus on uncovering those relationships.
+              </p>
+              <p style="margin-top:14px; color: var(--color-slate); font-size: 14.5px;">
+                <strong style="color: var(--color-ink-soft);">Data limitation:</strong>
+                the <code>Bank</code> field was randomly assigned during data generation
+                and has no real relationship with churn. Any apparent differences between
+                banks are statistical noise, so a bank-level churn comparison was
+                intentionally excluded from this analysis.
+              </p>
+            </div>
+          </article>
+
+          <!-- 5. TOOLS USED -->
+          
+
+          <!-- 6. DATA CLEANING -->
+          <article class="case-section" id="data-cleaning">
+            <div class="case-section-head">
+              <span class="case-section-num">05</span>
+              <h2>Data Cleaning</h2>
+            </div>
+            <div class="case-section-body">
+              <div class="process-steps">
+                <div class="process-step">
+                  <div class="step-marker">1</div>
+                  <div>
+                    <h4>Schema &amp; load</h4>
+                    <p>Created the <code>customers</code> table in MySQL with explicit data types across all 15 fields, and set <code>CustomerID</code> as the primary key.</p>
+                  </div>
+                </div>
+                <div class="process-step">
+                  <div class="step-marker">2</div>
+                  <div>
+                    <h4>Missing value audit</h4>
+                    <p>Ran a column-by-column NULL check across every field (<code>SUM(CASE WHEN ... IS NULL ...)</code>) to confirm data completeness before starting the analysis.</p>
+                  </div>
+                </div>
+                <div class="process-step">
+                  <div class="step-marker">3</div>
+                  <div>
+                    <h4>Duplicate check</h4>
+                    <p>Grouped by <code>CustomerID</code> and filtered for <code>COUNT(*) &gt; 1</code> to confirm every customer record was unique.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. ANALYSIS PROCESS -->
+          <article class="case-section" id="analysis-process">
+            <div class="case-section-head">
+              <span class="case-section-num">06</span>
+              <h2>Analysis Process</h2>
+            </div>
+            <div class="case-section-body">
+              <div class="process-steps">
+                <div class="process-step">
+                  <div class="step-marker">1</div>
+                  <div>
+                    <h4>Baseline churn rate</h4>
+                    <p>Calculated the overall churn rate across all 15,000 customers as a starting benchmark for every deeper cut of the data.</p>
+                  </div>
+                </div>
+                <div class="process-step">
+                  <div class="step-marker">2</div>
+                  <div>
+                    <h4>Demographic drivers</h4>
+                    <p>Broke churn down by province &amp; gender, employment status, and age band to check whether "who the customer is" predicts churn.</p>
+                  </div>
+                </div>
+                <div class="process-step">
+                  <div class="step-marker">3</div>
+                  <div>
+                    <h4>Financial &amp; behavioural drivers</h4>
+                    <p>Broke churn down by credit score band, tenure &amp; number of products, and account balance tier to check whether "the customer's financial relationship with the bank" predicts churn.</p>
+                  </div>
+                </div>
+                <div class="process-step">
+                  <div class="step-marker">4</div>
+                  <div>
+                    <h4>Multi-factor risk segmentation</h4>
+                    <p>Used a CTE to combine the five strongest individual factors (unemployed, poor credit score, low balance, single product, short tenure) into one composite 0–5 risk score, then grouped customers into No / Low / High / Critical Risk segments.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. DASHBOARD / VISUALISATIONS -->
+          <article class="case-section" id="dashboard">
+            <div class="case-section-head">
+              <span class="case-section-num">07</span>
+              <h2>Dashboard &amp; Visualisations</h2>
+            </div>
+            <div class="case-section-body">
+              <div class="dashboard-frame">
+                <div class="dashboard-frame-bar">
+                  <span></span><span></span><span></span>
+                </div>
+                <img
+                  src="../assets/images/dashboards/churn-dashboard.png"
+                  alt="SA Bank Churn Analysis Power BI dashboard, showing KPI cards for total customers, churned customers and churn rate, slicers for bank, education, gender and employment status, and charts breaking down churn rate by age group, credit score group, province, balance group and product"
+                  style="width:100%; border-radius: var(--radius-md); display:block;"
+                />
+              </div>
+              <p style="margin-top:16px; color: var(--color-slate); font-size: 14.5px;">
+                The report is a single interactive page: three KPI cards (15K Total
+                Customers, 3K Churned Customers, 18.47% Churn Rate) at the top, four
+                slicers on the left (Bank, Education Level, Gender, Employment Status),
+                and five charts breaking down churn rate by Age Group, Credit Score
+                Group, Province, Balance Group and Product — plus a summary table
+                cross-referencing Credit Score Group and Balance Group, and a written
+                Key Insights panel.
+              </p>
+            </div>
+          </article>
+
+          <!-- 9. KEY INSIGHTS -->
+          <article class="case-section" id="key-insights">
+            <div class="case-section-head">
+              <span class="case-section-num">08</span>
+              <h2>Key Insights</h2>
+            </div>
+            <div class="case-section-body">
+              <div class="insights-grid">
+                <div class="insight-card">
+                  <span class="num">Insight 01</span>
+                  <p>Overall churn rate across the customer base is <strong>18.47%</strong>.</p>
+                </div>
+                <div class="insight-card">
+                  <span class="num">Insight 02</span>
+                  <p>Customers with <strong>poor credit scores and account balances below R10,000</strong> have the highest churn rate of any segment, at <strong>40.24%</strong>.</p>
+                </div>
+                <div class="insight-card">
+                  <span class="num">Insight 03</span>
+                  <p><strong>Low account balance</strong> drives elevated churn even among customers with otherwise good credit — it isn't only a "bad credit" problem.</p>
+                </div>
+                <div class="insight-card">
+                  <span class="num">Insight 04</span>
+                  <p><strong>Credit score and account balance</strong> emerged as the two strongest individual predictors of churn, ahead of demographic factors like age or province.</p>
+                </div>
+                <div class="insight-card">
+                  <span class="num">Insight 05</span>
+                  <p>The composite 5-factor risk score shows a near-perfect relationship with churn: customers with <strong>0 risk factors never churned</strong>, while customers with <strong>all 5 factors always churned</strong>.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 10. BUSINESS IMPACT -->
+          <article class="case-section" id="business-impact">
+            <div class="case-section-head">
+              <span class="case-section-num">09</span>
+              <h2>Business Impact</h2>
+            </div>
+            <div class="case-section-body">
+              <div class="impact-callout">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m6.3 6.3 2.8 2.8"/><path d="M2 12h4"/><path d="m6.3 17.7 2.8-2.8"/><path d="M12 18v4"/><path d="m14.9 14.9 2.8 2.8"/><path d="M18 12h4"/><path d="m14.9 9.1 2.8-2.8"/></svg>
+                <p>
+                  Because the composite risk score separates churn so cleanly — 0 risk
+                  factors means the customer never churns, 5 means they always do — the
+                  retention team can use it as an early-warning flag instead of reacting
+                  after a customer has already left. That turns a limited retention budget
+                  into a targeted one: effort goes to the "Critical Risk" segment, where
+                  churn is both most likely and most preventable, rather than being spread
+                  evenly across a customer base where most accounts were never at risk.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- 11. RECOMMENDATIONS -->
+          <article class="case-section" id="recommendations">
+            <div class="case-section-head">
+              <span class="case-section-num">10</span>
+              <h2>Recommendations</h2>
+            </div>
+            <div class="case-section-body">
+              <div class="recommendations-list">
+                <div class="recommendation-item">
+                  <span class="rec-index">01</span>
+                  <p>Prioritise retention outreach on the "Critical Risk" segment (4–5 risk factors) first — for this group, churn is near-certain without intervention.</p>
+                </div>
+                <div class="recommendation-item">
+                  <span class="rec-index">02</span>
+                  <p>Target low-balance customers specifically, not just customers with poor credit — low balance drives churn on its own, so a credit-score-only view of risk would miss this group entirely.</p>
+                </div>
+                <div class="recommendation-item">
+                  <span class="rec-index">03</span>
+                  <p>Use credit score and account balance as the primary filters in any future retention model, rather than weighting all customer attributes equally.</p>
+                </div>
+                <div class="recommendation-item">
+                  <span class="rec-index">04</span>
+                  <p>Exclude bank-level comparisons from retention strategy — this analysis confirmed the "Bank" field carries no real signal in this dataset, so it shouldn't drive decisions.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 12. GITHUB REPOSITORY -->
+          <article class="case-section" id="technologies-used">
+            <div class="case-section-head">
+              <span class="case-section-num">11</span>
+              <h2>Technologies Used</h2>
+            </div>
+            <div class="case-section-body">
+              <div class="tools-used-grid">
+                <div class="tool-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
+                  Google Colab (Python)
+                </div>
+                <div class="tool-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
+                  SQL (MySQL)
+                </div>
+                <div class="tool-pill">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+                  Power BI
+                </div>
+              </div>
+              <p style="margin-top:18px; color: var(--color-slate); font-size: 14.5px;">
+                Google Colab (Python — Pandas &amp; NumPy) was used to synthesise the
+                source dataset. MySQL was used for the full analysis — schema design,
+                data quality checks, and every churn-driver query including the
+                multi-factor risk segmentation. Power BI was used to turn those findings
+                into an interactive, filterable dashboard for the retention team.
+              </p>
+            </div>
+          </article>
+
+          <article class="case-section" id="repository">
+            <div class="case-section-head">
+              <span class="case-section-num">12</span>
+              <h2>GitHub Repository</h2>
+            </div>
+            <div class="case-section-body">
+              <div class="repo-cta">
+                <div class="repo-cta-text">
+                  <h3>Explore the full analysis</h3>
+                  <p>SQL scripts and the Power BI dashboard file — all in one repository.</p>
+                </div>
+                <a href="https://github.com/BulelwaBisholo" class="btn btn-accent" target="_blank" rel="noopener">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.8 5.4.8 11.7c0 5 3.2 9.2 7.7 10.7.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.4.1-3 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.7.1 3 .7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.7-5.7 7.7-10.7C23.2 5.4 18.3.5 12 .5Z"/></svg>
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PREV / NEXT NAVIGATION -->
+          <div class="project-pagination">
+            <a href="home-credit-risk.html" class="pagination-link prev">
+              <span class="dir">Previous Case Study</span>
+              <span class="title">← Home Credit Risk Analysis</span>
+            </a>
+            <a href="global-layoffs.html" class="pagination-link next">
+              <span class="dir">Next Case Study</span>
+              <span class="title">Global Layoffs Analysis →</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo"><span class="dot">●</span> Bulelwa Bisholo</div>
+        <p>Junior Data Analyst turning business questions into data-driven answers.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <a href="../index.html#home">Home</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#process">Process</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#projects">Projects</a>
+        </div>
+        <div class="footer-col">
+          <h4>Case Studies</h4>
+          <a href="home-credit-risk.html">Home Credit Risk</a>
+          <a href="customer-churn.html">Customer Churn</a>
+          <a href="global-layoffs.html">Global Layoffs</a>
+          <a href="mexico-toy-sales.html">Mexico Toy Sales</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span data-current-year></span> Bulelwa Bisholo. Built with HTML, CSS &amp; JavaScript.</p>
+      <div class="footer-social">
+        <a href="https://github.com/BulelwaBisholo" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.8 5.4.8 11.7c0 5 3.2 9.2 7.7 10.7.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.4.1-3 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.7.1 3 .7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.7-5.7 7.7-10.7C23.2 5.4 18.3.5 12 .5Z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/bulelwabisholo" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+        </a>
+        <a href="mailto:bulelwabisholo@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" data-back-to-top aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
