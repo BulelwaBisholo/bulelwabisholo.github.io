@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Customer Churn Analysis — Bulelwa Bisholo</title>
-<meta name="description" content="Case study: Customer Churn Analysis by Bulelwa Bisholo, Junior Data Analyst." />
+<title>Home Credit Risk Analysis — Bulelwa Bisholo</title>
+<meta name="description" content="Case study: Home Credit Risk Analysis by Bulelwa Bisholo, Junior Data Analyst." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,23 +55,23 @@
       <div class="breadcrumb">
         <a href="../index.html#projects">Case Studies</a>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg>
-        <span>Customer Churn Analysis</span>
+        <span>Home Credit Risk Analysis</span>
       </div>
 
       <div class="project-hero-top">
         <div>
-          <p class="eyebrow">Case Study 02 · Customer Retention</p>
-          <h1>Customer Churn Analysis</h1>
+          <p class="eyebrow">Case Study 01 · Credit Risk</p>
+          <h1>Home Credit Risk Analysis</h1>
           <p class="project-subtitle">
-            Identifying which South African bank customers are most likely to churn —
-            and why — so the retention team can act before they leave, not after.
+            Identifying which loan applicant profiles carry the most default risk, to
+            help a lender make faster, fairer, evidence-based approval decisions.
           </p>
           <div class="project-meta-row">
             <span class="tool-chip secondary">SQL (MySQL)</span>
             <span class="tool-chip secondary">Power BI</span>
           </div>
         </div>
-        <div class="project-hero-case" aria-hidden="true">02</div>
+        <div class="project-hero-case" aria-hidden="true">01</div>
       </div>
 
       <div class="project-hero-actions">
@@ -117,12 +117,13 @@
             </div>
             <div class="case-section-body">
               <p>
-                South African retail banks lose revenue every time a customer closes an
-                account or moves to a competitor — and by the time attrition shows up in
-                a high-level retention report, it's often too late to intervene. The
-                retention team could see <em>that</em> customers were leaving, but had no
-                systematic way to see <em>which</em> customers were most likely to leave
-                next, or why.
+                Lenders approving credit on limited criteria run two risks at once:
+                approve too freely and defaults erode portfolio profitability; screen
+                too conservatively and genuinely low-risk applicants get turned away.
+                Home Credit needed a clearer, evidence-based view of which applicant
+                characteristics actually predict default — rather than relying on a
+                single factor like income, which turns out to be a weaker signal on
+                its own than it first appears.
               </p>
             </div>
           </article>
@@ -135,15 +136,16 @@
             </div>
             <div class="case-section-body">
               <p>
-                The Head of Customer Retention asked for an analysis that went beyond a
-                single "churn rate" number: which customer profiles were actually driving
-                attrition, and whether those patterns held true across the bank's different
-                provinces, employment segments and product lines — so the retention team
-                could prioritise outreach where it would have the most impact, instead of
-                treating every at-risk customer the same way.
+                The Head of Credit Risk asked for an analysis identifying which
+                applicant profiles carry the most default risk — by income, age,
+                gender, occupation and existing debt burden — so underwriting criteria
+                could be tightened for genuinely high-risk segments without penalising
+                applicants who are statistically low-risk.
               </p>
             </div>
           </article>
+
+          <!-- 3. OBJECTIVES -->
           <article class="case-section" id="business-objectives">
             <div class="case-section-head">
               <span class="case-section-num">03</span>
@@ -153,19 +155,19 @@
               <ul class="objectives-list">
                 <li>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                  <span>Quantify the overall customer churn rate across the full 15,000-customer base.</span>
+                  <span>Establish the scale and quality of the dataset before drawing any conclusions from it.</span>
                 </li>
                 <li>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                  <span>Identify which demographic and financial factors — province, gender, age, employment status, credit score, tenure, product count and account balance — are most strongly associated with churn.</span>
+                  <span>Quantify the overall default rate and confirm how imbalanced the dataset is between defaulters and non-defaulters.</span>
                 </li>
                 <li>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                  <span>Combine the strongest predictors into a single, composite risk score that segments customers by how likely they are to churn.</span>
+                  <span>Identify which applicant attributes — income, debt-to-income ratio, age, gender and occupation — are most strongly associated with default.</span>
                 </li>
                 <li>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                  <span>Package the findings into an interactive Power BI dashboard the retention team can filter and explore without needing to write SQL themselves.</span>
+                  <span>Translate the strongest predictors into a simple, explainable rule-based scoring model that supports an Approve / Review / Reject lending decision.</span>
                 </li>
               </ul>
             </div>
@@ -181,37 +183,31 @@
               <div class="dataset-grid">
                 <div class="dataset-stat">
                   <span class="label">Source</span>
-                  <span class="value">Synthetic (self-generated)</span>
+                  <span class="value">Kaggle — Home Credit Default Risk</span>
                 </div>
                 <div class="dataset-stat">
                   <span class="label">Rows</span>
-                  <span class="value">15,000</span>
+                  <span class="value">305,545</span>
                 </div>
                 <div class="dataset-stat">
                   <span class="label">Columns</span>
-                  <span class="value">15</span>
+                  <span class="value" style="font-style:italic; font-size:14px; color:var(--color-slate);">Confirm from DESCRIBE output</span>
                 </div>
                 <div class="dataset-stat">
                   <span class="label">Format</span>
-                  <span class="value">CSV</span>
+                  <span class="value">CSV → MySQL table</span>
                 </div>
               </div>
               <p>
-                Each row represents one South African retail banking customer, combining
-                demographics (age, gender, province, education level), financial profile
-                (account balance, estimated salary, credit score), relationship data
-                (tenure, number of products held, credit card ownership) and the churn
-                outcome. The dataset was synthesised in Google Colab (Python — Pandas
-                &amp; NumPy), with churn logic deliberately embedded around employment
-                status, credit score, account balance, product count and tenure — so
-                the analysis could focus on uncovering those relationships.
-              </p>
-              <p style="margin-top:14px; color: var(--color-slate); font-size: 14.5px;">
-                <strong style="color: var(--color-ink-soft);">Data limitation:</strong>
-                the <code>Bank</code> field was randomly assigned during data generation
-                and has no real relationship with churn. Any apparent differences between
-                banks are statistical noise, so a bank-level churn comparison was
-                intentionally excluded from this analysis.
+                Each row represents one loan application at Home Credit. The
+                <code>TARGET</code> column flags whether the applicant experienced
+                payment difficulties (1) or repaid successfully (0) — <code>SK_ID_CURR</code>
+                confirmed as a unique client identifier with no duplicate records. Fields
+                cover demographics (age via <code>DAYS_BIRTH</code>, gender), financials
+                (<code>AMT_INCOME_TOTAL</code>, <code>AMT_CREDIT</code>, <code>AMT_ANNUITY</code>),
+                employment, occupation, education and family status. The dataset is
+                imbalanced toward successful repayments, which shaped how the analysis
+                was framed — proportions and rates rather than raw counts.
               </p>
             </div>
           </article>
@@ -230,22 +226,22 @@
                 <div class="process-step">
                   <div class="step-marker">1</div>
                   <div>
-                    <h4>Schema &amp; load</h4>
-                    <p>Created the <code>customers</code> table in MySQL with explicit data types across all 15 fields, and set <code>CustomerID</code> as the primary key.</p>
+                    <h4>Schema &amp; structure review</h4>
+                    <p>Counted total records, ran <code>DESCRIBE application_train</code> to review column names and types, and previewed sample rows to understand the data format before writing any analysis queries.</p>
                   </div>
                 </div>
                 <div class="process-step">
                   <div class="step-marker">2</div>
                   <div>
-                    <h4>Missing value audit</h4>
-                    <p>Ran a column-by-column NULL check across every field (<code>SUM(CASE WHEN ... IS NULL ...)</code>) to confirm data completeness before starting the analysis.</p>
+                    <h4>Uniqueness check</h4>
+                    <p>Confirmed <code>COUNT(*)</code> matched <code>COUNT(DISTINCT SK_ID_CURR)</code> — no duplicate client records in the dataset.</p>
                   </div>
                 </div>
                 <div class="process-step">
                   <div class="step-marker">3</div>
                   <div>
-                    <h4>Duplicate check</h4>
-                    <p>Grouped by <code>CustomerID</code> and filtered for <code>COUNT(*) &gt; 1</code> to confirm every customer record was unique.</p>
+                    <h4>Missing value checks</h4>
+                    <p>Verified <code>AMT_INCOME_TOTAL</code> had zero missing values, making it reliable for financial analysis; filtered out NULL and blank <code>OCCUPATION_TYPE</code> values before analysing default rate by occupation.</p>
                   </div>
                 </div>
               </div>
@@ -263,29 +259,29 @@
                 <div class="process-step">
                   <div class="step-marker">1</div>
                   <div>
-                    <h4>Baseline churn rate</h4>
-                    <p>Calculated the overall churn rate across all 15,000 customers as a starting benchmark for every deeper cut of the data.</p>
+                    <h4>Default distribution</h4>
+                    <p>Measured the split between defaulters and non-defaulters to confirm the dataset is imbalanced toward successful repayments — the baseline every other cut of the data was compared against.</p>
                   </div>
                 </div>
                 <div class="process-step">
                   <div class="step-marker">2</div>
                   <div>
-                    <h4>Demographic drivers</h4>
-                    <p>Broke churn down by province &amp; gender, employment status, and age band to check whether "who the customer is" predicts churn.</p>
+                    <h4>Financial profile comparison</h4>
+                    <p>Compared average income, credit amount and annuity between defaulters and non-defaulters, then segmented applicants into Low / Middle / High income bands and Low / Moderate / High debt-to-income bands.</p>
                   </div>
                 </div>
                 <div class="process-step">
                   <div class="step-marker">3</div>
                   <div>
-                    <h4>Financial &amp; behavioural drivers</h4>
-                    <p>Broke churn down by credit score band, tenure &amp; number of products, and account balance tier to check whether "the customer's financial relationship with the bank" predicts churn.</p>
+                    <h4>Demographic risk analysis</h4>
+                    <p>Broke default rate down by age band × gender, and separately by occupation type, to find which applicant profiles carry the most risk.</p>
                   </div>
                 </div>
                 <div class="process-step">
                   <div class="step-marker">4</div>
                   <div>
-                    <h4>Multi-factor risk segmentation</h4>
-                    <p>Used a CTE to combine the five strongest individual factors (unemployed, poor credit score, low balance, single product, short tenure) into one composite 0–5 risk score, then grouped customers into No / Low / High / Critical Risk segments.</p>
+                    <h4>Rule-based risk scoring model</h4>
+                    <p>Built a CTE-based scoring model combining age, income and credit-burden risk into a single 3–9 point score, translated into an Approve / Review / Reject lending decision — a transparent, explainable alternative to a black-box model.</p>
                   </div>
                 </div>
               </div>
@@ -303,21 +299,11 @@
                 <div class="dashboard-frame-bar">
                   <span></span><span></span><span></span>
                 </div>
-                <img
-                  src="../assets/images/dashboards/churn-dashboard.png"
-                  alt="SA Bank Churn Analysis Power BI dashboard, showing KPI cards for total customers, churned customers and churn rate, slicers for bank, education, gender and employment status, and charts breaking down churn rate by age group, credit score group, province, balance group and product"
-                  style="width:100%; border-radius: var(--radius-md); display:block;"
-                />
+                <div class="dashboard-placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 15v3"/><path d="M12 10v8"/><path d="M17 6v12"/></svg>
+                  <p>Power BI dashboard coming soon — the SQL analysis above is already final.</p>
+                </div>
               </div>
-              <p style="margin-top:16px; color: var(--color-slate); font-size: 14.5px;">
-                The report is a single interactive page: three KPI cards (15K Total
-                Customers, 3K Churned Customers, 18.47% Churn Rate) at the top, four
-                slicers on the left (Bank, Education Level, Gender, Employment Status),
-                and five charts breaking down churn rate by Age Group, Credit Score
-                Group, Province, Balance Group and Product — plus a summary table
-                cross-referencing Credit Score Group and Balance Group, and a written
-                Key Insights panel.
-              </p>
             </div>
           </article>
 
@@ -331,23 +317,19 @@
               <div class="insights-grid">
                 <div class="insight-card">
                   <span class="num">Insight 01</span>
-                  <p>Overall churn rate across the customer base is <strong>18.47%</strong>.</p>
+                  <p>Income has a <strong>protective effect mainly at the top</strong>: high-income applicants default at <strong>6.9%</strong>, versus 8.22% (low income) and 8.52% (middle income) — a threshold effect, not a gradual one.</p>
                 </div>
                 <div class="insight-card">
                   <span class="num">Insight 02</span>
-                  <p>Customers with <strong>poor credit scores and account balances below R10,000</strong> have the highest churn rate of any segment, at <strong>40.24%</strong>.</p>
+                  <p>Debt burden alone doesn't predict default: the highest debt-to-income group defaults at <strong>8.08%</strong> — lower than the moderate-risk group at 8.27%. Loan size relative to income isn't sufficient on its own.</p>
                 </div>
                 <div class="insight-card">
                   <span class="num">Insight 03</span>
-                  <p><strong>Low account balance</strong> drives elevated churn even among customers with otherwise good credit — it isn't only a "bad credit" problem.</p>
+                  <p><strong>Age and gender combine into the sharpest risk signal</strong>: applicants under 30 who are male default at 12.60%, nearly triple applicants over 60 who are female, at 4.55%.</p>
                 </div>
                 <div class="insight-card">
                   <span class="num">Insight 04</span>
-                  <p><strong>Credit score and account balance</strong> emerged as the two strongest individual predictors of churn, ahead of demographic factors like age or province.</p>
-                </div>
-                <div class="insight-card">
-                  <span class="num">Insight 05</span>
-                  <p>The composite 5-factor risk score shows a near-perfect relationship with churn: customers with <strong>0 risk factors never churned</strong>, while customers with <strong>all 5 factors always churned</strong>.</p>
+                  <p><strong>Occupation is a strong risk marker</strong>: low-skill labourers default at 17.23% — more than three times the rate of accountants, at 4.85%.</p>
                 </div>
               </div>
             </div>
@@ -363,13 +345,17 @@
               <div class="impact-callout">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m6.3 6.3 2.8 2.8"/><path d="M2 12h4"/><path d="m6.3 17.7 2.8-2.8"/><path d="M12 18v4"/><path d="m14.9 14.9 2.8 2.8"/><path d="M18 12h4"/><path d="m14.9 9.1 2.8-2.8"/></svg>
                 <p>
-                  Because the composite risk score separates churn so cleanly — 0 risk
-                  factors means the customer never churns, 5 means they always do — the
-                  retention team can use it as an early-warning flag instead of reacting
-                  after a customer has already left. That turns a limited retention budget
-                  into a targeted one: effort goes to the "Critical Risk" segment, where
-                  churn is both most likely and most preventable, rather than being spread
-                  evenly across a customer base where most accounts were never at risk.
+                  Because income and debt burden alone are weak, inconsistent predictors,
+                  a lender relying on them in isolation risks approving high-risk
+                  applicants at standard terms while over-pricing genuinely low-risk ones
+                  — a pattern consistent with the reckless-lending cases seen in debt
+                  counselling, where high loan amounts were approved despite limited
+                  repayment capacity. Age, gender and occupation showed far larger,
+                  more consistent gaps, meaning a lender that weights those factors
+                  correctly can tighten screening on the true high-risk segments — young
+                  male applicants, low-skill occupations, elevated debt burden — without
+                  losing the low-risk customers a purely income-based filter would
+                  wrongly flag.
                 </p>
               </div>
             </div>
@@ -385,19 +371,19 @@
               <div class="recommendations-list">
                 <div class="recommendation-item">
                   <span class="rec-index">01</span>
-                  <p>Prioritise retention outreach on the "Critical Risk" segment (4–5 risk factors) first — for this group, churn is near-certain without intervention.</p>
+                  <p>Apply stricter credit assessment for young (under-30) male applicants and low-skill occupation categories, where default rates run 2–3x the portfolio average.</p>
                 </div>
                 <div class="recommendation-item">
                   <span class="rec-index">02</span>
-                  <p>Target low-balance customers specifically, not just customers with poor credit — low balance drives churn on its own, so a credit-score-only view of risk would miss this group entirely.</p>
+                  <p>Don't rely on debt-to-income ratio alone as a risk filter — combine it with income band, age and occupation, since high debt burden alone did not correspond to the highest default rate.</p>
                 </div>
                 <div class="recommendation-item">
                   <span class="rec-index">03</span>
-                  <p>Use credit score and account balance as the primary filters in any future retention model, rather than weighting all customer attributes equally.</p>
+                  <p>Offer more competitive terms to demonstrably lower-risk segments — older female applicants and professional occupations like accounting — to stay competitive without adding risk.</p>
                 </div>
                 <div class="recommendation-item">
                   <span class="rec-index">04</span>
-                  <p>Exclude bank-level comparisons from retention strategy — this analysis confirmed the "Bank" field carries no real signal in this dataset, so it shouldn't drive decisions.</p>
+                  <p>Adopt the rule-based Approve / Review / Reject scoring logic as a fast, transparent first-pass screen — one that's easy to explain to both underwriters and regulators, ahead of any future statistical model.</p>
                 </div>
               </div>
             </div>
@@ -412,12 +398,8 @@
             <div class="case-section-body">
               <div class="tools-used-grid">
                 <div class="tool-pill">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>
-                  Google Colab (Python)
-                </div>
-                <div class="tool-pill">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg>
-                  SQL (MySQL)
+                  SQL (MySQL Workbench)
                 </div>
                 <div class="tool-pill">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
@@ -425,11 +407,10 @@
                 </div>
               </div>
               <p style="margin-top:18px; color: var(--color-slate); font-size: 14.5px;">
-                Google Colab (Python — Pandas &amp; NumPy) was used to synthesise the
-                source dataset. MySQL was used for the full analysis — schema design,
-                data quality checks, and every churn-driver query including the
-                multi-factor risk segmentation. Power BI was used to turn those findings
-                into an interactive, filterable dashboard for the retention team.
+                MySQL Workbench was used for the entire analysis — data quality checks,
+                default-driver queries across income, debt burden, age, gender and
+                occupation, and the CTE-based rule scoring model. Power BI will be used
+                for the stakeholder-facing dashboard (coming soon).
               </p>
             </div>
           </article>
@@ -443,7 +424,7 @@
               <div class="repo-cta">
                 <div class="repo-cta-text">
                   <h3>Explore the full analysis</h3>
-                  <p>SQL scripts and the Power BI dashboard file — all in one repository.</p>
+                  <p>SQL analysis, EDA scripts, and the Power BI dashboard file — all in one repository.</p>
                 </div>
                 <a href="https://github.com/BulelwaBisholo" class="btn btn-accent" target="_blank" rel="noopener">
                   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.8 5.4.8 11.7c0 5 3.2 9.2 7.7 10.7.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.4.1-3 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.7.1 3 .7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.7-5.7 7.7-10.7C23.2 5.4 18.3.5 12 .5Z"/></svg>
@@ -455,13 +436,10 @@
 
           <!-- PREV / NEXT NAVIGATION -->
           <div class="project-pagination">
-            <a href="home-credit-risk.html" class="pagination-link prev">
-              <span class="dir">Previous Case Study</span>
-              <span class="title">← Home Credit Risk Analysis</span>
-            </a>
-            <a href="global-layoffs.html" class="pagination-link next">
+            <span></span>
+            <a href="customer-churn.html" class="pagination-link next">
               <span class="dir">Next Case Study</span>
-              <span class="title">Global Layoffs Analysis →</span>
+              <span class="title">Customer Churn Analysis →</span>
             </a>
           </div>
 
