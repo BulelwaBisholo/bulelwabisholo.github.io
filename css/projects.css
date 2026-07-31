@@ -285,13 +285,14 @@
 .process-step h4 { font-size: 15.5px; font-weight: 600; font-family: var(--font-body); margin-bottom: 6px; }
 .process-step p { font-size: 14.5px; color: var(--color-slate); }
 
-/* Dashboard / visualisation placeholder frame */
+/* Dashboard / visualisation frame */
 .dashboard-frame {
   border: 1px solid var(--color-line);
   border-radius: var(--radius-lg);
   background: var(--color-paper-alt);
   padding: 8px;
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
 .dashboard-frame-bar {
   display: flex;
@@ -304,28 +305,13 @@
   border-radius: 50%;
   background: var(--color-line);
 }
-.dashboard-placeholder {
-  aspect-ratio: 16 / 8;
+.dashboard-image {
+  display: block;
+  width: 100%;
+  height: auto;
   border-radius: var(--radius-md);
-  background:
-    linear-gradient(var(--color-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-line) 1px, transparent 1px);
-  background-size: 40px 40px;
-  background-color: var(--color-paper);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-  text-align: center;
-  padding: 24px;
-}
-.dashboard-placeholder svg { width: 36px; height: 36px; color: var(--color-slate); }
-.dashboard-placeholder p {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  color: var(--color-slate);
-  max-width: 340px;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
 }
 
 /* Key insight cards */
