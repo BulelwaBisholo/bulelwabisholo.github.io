@@ -113,12 +113,13 @@
               <h2>Business Problem</h2>
             </div>
             <div class="case-section-body">
-              <p class="placeholder">
-                Add 2–3 sentences describing the real business challenge this project addresses.
-                What decision is the business struggling to make, and why does it matter financially
-                or operationally? E.g. "The lending team approves loans based on limited criteria,
-                resulting in a default rate that is cutting into portfolio profitability."
-              </p>
+             <p>
+  The Superstore business needs a clearer understanding of what's actually driving
+  profitability, not just sales volume. Discounts are applied broadly across products
+  and orders, but it isn't clear whether they're growing the business or quietly eroding
+  margins. This analysis examines 9,692 transactions across 4,931 orders to uncover how
+  sales, discounts, and profit interact.
+</p>
             </div>
           </article>
 
@@ -129,12 +130,11 @@
               <h2>Stakeholder Request</h2>
             </div>
             <div class="case-section-body">
-              <p class="placeholder">
-                Write a realistic request from a stakeholder (e.g. Head of Credit Risk, Lending
-                Manager) explaining why they need this analysis. Frame it as a quote or a brief,
-                e.g. "The Head of Credit Risk asked for a model that flags high-risk applicants
-                before approval, so the team can reduce defaults without rejecting good customers."
-              </p>
+              <p>
+  "Our sales numbers look healthy, but profit isn't keeping pace. We need to understand
+  whether our discounting strategy is helping or hurting us, and where we should focus
+  to protect margins." — Head of Sales (simulated stakeholder brief)
+</p>
             </div>
           </article>
 
@@ -148,7 +148,7 @@
               <ul class="objectives-list">
                 <li>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                  <span class="placeholder" style="border:none;background:none;padding:0;">Objective 1 — e.g. identify the strongest predictors of loan default.</span>
+                  <span class="placeholder" style="border:none;background:none;padding:0;">Identify which categories, products, and customers drive the highest sales and profit.</span>
                 </li>
                 <li>
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -191,10 +191,11 @@
                   <span class="value">CSV / relational tables</span>
                 </div>
               </div>
-              <p class="placeholder">
-                Describe the dataset: what each row represents, the time period it covers, and any
-                notable characteristics (e.g. multiple related tables, missing data, class imbalance).
-              </p>
+              <p>
+  Each row represents a single order line item, including product, category, customer,
+  segment, region, sales value, discount applied, and profit. The dataset was provided
+  in a clean, analysis-ready format with no missing-value or structural issues.
+</p>
             </div>
           </article>
 
@@ -207,30 +208,12 @@
               <span class="case-section-num">05</span>
               <h2>Data Cleaning</h2>
             </div>
-            <div class="case-section-body">
-              <div class="process-steps">
-                <div class="process-step">
-                  <div class="step-marker">1</div>
-                  <div>
-                    <h4><!-- EDIT ME --> Missing value handling</h4>
-                    <p class="placeholder">Describe how missing or null values were identified and treated.</p>
-                  </div>
-                </div>
-                <div class="process-step">
-                  <div class="step-marker">2</div>
-                  <div>
-                    <h4><!-- EDIT ME --> Data type & format fixes</h4>
-                    <p class="placeholder">Describe any type conversions, date formatting, or encoding issues resolved.</p>
-                  </div>
-                </div>
-                <div class="process-step">
-                  <div class="step-marker">3</div>
-                  <div>
-                    <h4><!-- EDIT ME --> Outlier & duplicate checks</h4>
-                    <p class="placeholder">Describe how outliers or duplicate records were identified and handled.</p>
-                  </div>
-                </div>
-              </div>
+              <div class="case-section-body">
+            <p>
+      The dataset was received in a clean, analysis-ready state. Initial checks confirmed
+      row counts, unique orders, and distinct category values before moving into analysis —
+      no additional cleaning steps were required.
+    </p>
             </div>
           </article>
 
@@ -246,14 +229,14 @@
                   <div class="step-marker">1</div>
                   <div>
                     <h4><!-- EDIT ME --> Exploratory data analysis</h4>
-                    <p class="placeholder">Summarise the initial exploration — distributions, correlations, early hypotheses.</p>
+                    <p>Counted total rows, identified unique orders, and reviewed distinct categories and value ranges to understand the dataset's shape.</p>
                   </div>
                 </div>
                 <div class="process-step">
                   <div class="step-marker">2</div>
                   <div>
                     <h4><!-- EDIT ME --> Feature engineering & segmentation</h4>
-                    <p class="placeholder">Describe any new variables created and how applicants were grouped.</p>
+                    <p>Compared sales, profit, and order volume across discount levels using HAVING and aggregate functions to isolate the discount-profit relationship.</p>
                   </div>
                 </div>
                 <div class="process-step">
@@ -280,7 +263,7 @@
                 </div>
                 <div class="dashboard-placeholder">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 15v3"/><path d="M12 10v8"/><path d="M17 6v12"/></svg>
-                  <p>Add a screenshot or embed of your Tableau / Excel dashboard here.</p>
+                  <p>Power BI dashboard in progress — coming soon.</p>
                 </div>
               </div>
             </div>
@@ -296,15 +279,15 @@
               <div class="insights-grid">
                 <div class="insight-card">
                   <span class="num">Insight 01</span>
-                  <p class="placeholder">What's the single most important pattern found in the data?</p>
+                  <p>A 0% discount generated the highest overall sales and profit across the dataset.</p>
                 </div>
                 <div class="insight-card">
                   <span class="num">Insight 02</span>
-                  <p class="placeholder">Which segment, feature or trend stood out most?</p>
+                  <p>0% and 20% discount levels were the strongest performers for both sales and profitability.</p>
                 </div>
                 <div class="insight-card">
                   <span class="num">Insight 03</span>
-                  <p class="placeholder">What did the data reveal that wasn't obvious at the start?</p>
+                  <p>Higher discount levels were consistently associated with weaker profitability — more discount didn't mean more profit.</p>
                 </div>
               </div>
             </div>
@@ -319,10 +302,12 @@
             <div class="case-section-body">
               <div class="impact-callout">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m6.3 6.3 2.8 2.8"/><path d="M2 12h4"/><path d="m6.3 17.7 2.8-2.8"/><path d="M12 18v4"/><path d="m14.9 14.9 2.8 2.8"/><path d="M18 12h4"/><path d="m14.9 9.1 2.8-2.8"/></svg>
-                <p class="placeholder" style="background:none;border:none;padding:0;">
-                  Explain in plain business terms why these findings matter — e.g. potential cost
-                  savings, reduced default rate, faster decision-making, or improved customer experience.
-                </p>
+                <p style="background:none;border:none;padding:0;">
+  These findings show the current discounting approach may be working against
+  profitability in several segments. Left unchecked, broad high-discount strategies risk
+  growing sales on paper while quietly shrinking margins — a pattern that's easy to miss
+  without breaking discount levels out from overall performance.
+</p>
               </div>
             </div>
           </article>
@@ -337,15 +322,15 @@
               <div class="recommendations-list">
                 <div class="recommendation-item">
                   <span class="rec-index">01</span>
-                  <p class="placeholder" style="background:none;border:none;padding:0;">Practical recommendation 1 — what should the business actually do differently?</p>
+                  <p style="background:none;border:none;padding:0;">Review discount levels above 20%, which show a consistent link to weaker profit performance.</p>
                 </div>
                 <div class="recommendation-item">
                   <span class="rec-index">02</span>
-                  <p class="placeholder" style="background:none;border:none;padding:0;">Practical recommendation 2.</p>
+                  <p style="background:none;border:none;padding:0;">Prioritise profitable sales, not just volume — factor profit margin into how sales performance is judged.</p>
                 </div>
                 <div class="recommendation-item">
                   <span class="rec-index">03</span>
-                  <p class="placeholder" style="background:none;border:none;padding:0;">Practical recommendation 3.</p>
+                  <p style="background:none;border:none;padding:0;">Target discounts more precisely, applying them to specific products, customers, or campaigns rather than broadly.</p>
                 </div>
               </div>
             </div>
@@ -376,10 +361,10 @@
                   GitHub
                 </div>
               </div>
-              <p class="placeholder" style="margin-top:18px;">
-                Note briefly what each tool was used for, e.g. "SQL for data extraction and joins,
-                Python for feature engineering and modelling, Power BI for the stakeholder-facing dashboard."
-              </p>
+              <p style="margin-top:18px;">
+  MySQL and MySQL Workbench were used for data exploration and analysis, Power BI for
+  the interactive dashboard, and GitHub for version control and documentation.
+</p>
             </div>
           </article>
 
