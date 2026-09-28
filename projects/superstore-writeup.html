@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Superstore Sales & Profitability Analysis — Bulelwa Bisholo</title>
+<style>
+  :root{
+    --bg:#f4f5f7;
+    --panel:#ffffff;
+    --ink:#14181f;
+    --ink-soft:#4b5563;
+    --ink-faint:#8b93a1;
+    --line:#e4e6ea;
+    --accent:#2f5fdb;
+    --accent-soft:#eaf0fe;
+    --good:#1c8a5a;
+    --good-bg:#e7f6ee;
+    --navy:#0e1c2c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:Georgia,"Times New Roman",serif;
+    font-weight:700;
+    margin:0;
+  }
+
+  /* ---- top nav ---- */
+  .topnav{
+    background:var(--panel);
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 40px;
+  }
+  .brand{display:flex;align-items:center;gap:9px;font-weight:700;font-size:17px;letter-spacing:.2px;}
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;}
+  .navlinks{display:flex;gap:34px;font-size:14.5px;color:#1f2430;}
+  .navlinks a{color:inherit;text-decoration:none;}
+  .navlinks a:hover{color:var(--accent);}
+  .theme-toggle{
+    width:36px;height:36px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:#c9a227;font-size:15px;
+  }
+
+  /* ---- repo button row ---- */
+  .repo-row{padding:32px 40px 8px;display:flex;gap:14px;flex-wrap:wrap;}
+  .repo-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--navy);color:#fff;text-decoration:none;
+    padding:13px 22px;border-radius:9px;font-size:14.5px;font-weight:600;
+  }
+  .repo-btn svg{width:17px;height:17px;fill:#fff;}
+  .dash-btn{
+    display:inline-flex;align-items:center;gap:9px;
+    background:var(--accent);color:#fff;text-decoration:none;
+    padding:13px 22px;border-radius:9px;font-size:14.5px;font-weight:600;
+  }
+  .dash-btn svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2;}
+
+  hr.top-rule{border:none;border-top:1px solid var(--line);margin:28px 0 0;}
+
+  /* ---- layout ---- */
+  .wrap{display:flex;max-width:1400px;margin:0 auto;padding:44px 40px 100px;gap:60px;}
+  .toc{width:230px;flex-shrink:0;}
+  .toc-label{
+    font-size:11.5px;letter-spacing:1.4px;color:var(--ink-faint);
+    font-weight:600;margin-bottom:18px;
+  }
+  .toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line);}
+  .toc li{
+    padding:8px 0 8px 18px;font-size:14px;color:var(--ink-soft);
+    display:flex;gap:10px;cursor:default;
+  }
+  .toc li.active{color:var(--accent);font-weight:600;margin-left:-1px;border-left:2px solid var(--accent);padding-left:17px;}
+  .toc .idx{color:var(--ink-faint);font-size:12px;font-variant-numeric:tabular-nums;min-width:16px;}
+  .toc li.active .idx{color:var(--accent);}
+
+  .content{flex:1;min-width:0;max-width:900px;}
+  section{padding:34px 0;border-bottom:1px solid var(--line);}
+  section:first-child{padding-top:0;}
+  section:last-child{border-bottom:none;}
+  .eyebrow{
+    color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.5px;
+    margin-bottom:10px;display:block;
+  }
+  h2.sec-title{font-size:28px;line-height:1.25;margin-bottom:16px;}
+  p{font-size:16px;line-height:1.7;color:#232833;margin:0 0 14px;}
+  p:last-child{margin-bottom:0;}
+  em{font-style:italic;}
+
+  ul.plain{margin:0;padding:0;list-style:none;}
+  ul.plain li{
+    font-size:16px;line-height:1.65;color:#232833;
+    padding:9px 0 9px 30px;position:relative;
+  }
+  ul.plain.check li::before{
+    content:"";position:absolute;left:0;top:13px;width:16px;height:16px;
+    background:var(--good-bg);border-radius:4px;
+  }
+  ul.plain.check li::after{
+    content:"✓";position:absolute;left:2.5px;top:9.5px;color:var(--good);
+    font-size:11px;font-weight:700;
+  }
+  ul.plain.dash li{padding-left:20px;}
+  ul.plain.dash li::before{content:"–";position:absolute;left:0;color:var(--ink-faint);}
+
+  .meta-list{display:grid;grid-template-columns:auto 1fr;gap:8px 24px;font-size:15px;}
+  .meta-list dt{color:var(--ink-faint);font-weight:600;}
+  .meta-list dd{margin:0;color:#232833;}
+
+  .stat-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0 8px;
+  }
+  .stat-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:18px;
+  }
+  .stat-card .label{font-size:12.5px;color:var(--ink-faint);margin-bottom:6px;}
+  .stat-card .val{font-size:20px;font-weight:700;font-family:Georgia,serif;}
+  .stat-card.pos .val{color:var(--good);}
+
+  table.dtable{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:8px;}
+  table.dtable th{
+    text-align:left;font-size:11.5px;letter-spacing:.6px;color:var(--ink-faint);
+    font-weight:600;padding:0 12px 10px 0;border-bottom:1px solid var(--line);
+  }
+  table.dtable td{padding:12px 12px 12px 0;border-bottom:1px solid var(--line);color:#232833;}
+  table.dtable tr:last-child td{border-bottom:none;}
+  .neg{color:#c0392b;font-weight:600;}
+  .pos-val{color:var(--good);font-weight:600;}
+
+  .insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px;}
+  .insight-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px;
+  }
+  .insight-card .num{
+    width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;
+    margin-bottom:12px;
+  }
+  .insight-card h4{font-family:inherit;font-size:15.5px;font-weight:700;margin:0 0 6px;}
+  .insight-card p{font-size:14.5px;line-height:1.6;color:var(--ink-soft);margin:0;}
+
+  .pill{
+    display:inline-block;background:var(--accent-soft);color:var(--accent);
+    font-size:13px;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:14px;
+  }
+  .impact-figure{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:22px 24px;margin:18px 0;
+  }
+  .impact-figure .big{font-family:Georgia,serif;font-size:32px;font-weight:700;color:var(--good);}
+  .impact-figure .small{font-size:13.5px;color:var(--ink-faint);margin-top:4px;}
+
+  .tech-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:6px;}
+  .tag{
+    background:var(--accent-soft);color:var(--accent);font-size:13.5px;font-weight:600;
+    padding:7px 14px;border-radius:7px;
+  }
+
+  .repo-final{
+    display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:#fff;
+    text-decoration:none;padding:13px 22px;border-radius:9px;font-size:14.5px;font-weight:600;
+    margin-top:8px;
+  }
+
+  @media (max-width:880px){
+    .wrap{flex-direction:column;padding:32px 22px 80px;}
+    .toc{width:100%;}
+    .toc ol{display:none;}
+    .stat-grid{grid-template-columns:1fr 1fr;}
+    .insight-grid{grid-template-columns:1fr;}
+    .topnav{padding:16px 20px;}
+    .navlinks{display:none;}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topnav">
+    <div class="brand"><span class="dot"></span>Bulelwa Bisholo</div>
+    <div class="navlinks">
+      <a href="#">Home</a><a href="#">About</a><a href="#">Process</a>
+      <a href="#">Skills</a><a href="#">Projects</a><a href="#">Contact</a>
+    </div>
+    <div class="theme-toggle">☀</div>
+  </div>
+
+  <div class="repo-row">
+    <a class="repo-btn" href="https://github.com/BulelwaBisholo/Superstore-Sales-Analyses" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+      0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01
+      1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+      0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04
+      2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54
+      1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      View Repository on GitHub
+    </a>
+    <a class="dash-btn" href="https://bulelwabisholo.github.io/projects/superstore-sales.html" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+      View Interactive Dashboard
+    </a>
+  </div>
+  <hr class="top-rule">
+
+  <div class="wrap">
+    <nav class="toc">
+      <div class="toc-label">ON THIS PAGE</div>
+      <ol>
+        <li class="active"><span class="idx">01</span>Business Problem</li>
+        <li><span class="idx">02</span>Stakeholder Request</li>
+        <li><span class="idx">03</span>Business Objectives</li>
+        <li><span class="idx">04</span>Dataset Overview</li>
+        <li><span class="idx">05</span>Data Cleaning</li>
+        <li><span class="idx">06</span>Analysis Process</li>
+        <li><span class="idx">07</span>Dashboard</li>
+        <li><span class="idx">08</span>Key Insights</li>
+        <li><span class="idx">09</span>Business Impact</li>
+        <li><span class="idx">10</span>Recommendations</li>
+        <li><span class="idx">11</span>Technologies Used</li>
+        <li><span class="idx">12</span>GitHub Repository</li>
+      </ol>
+    </nav>
+
+    <main class="content">
+
+      <section id="s01">
+        <span class="eyebrow">01</span>
+        <h2 class="sec-title">Business Problem</h2>
+        <p>Superstore retailers routinely discount orders to win sales, but not every discount pays for itself. Without breaking profitability down by discount level, category, or region, a store can hit healthy total sales while quietly bleeding margin on a subset of orders — and nobody notices until the year-end numbers come in soft.</p>
+      </section>
+
+      <section id="s02">
+        <span class="eyebrow">02</span>
+        <h2 class="sec-title">Stakeholder Request</h2>
+        <p>The Operations Manager asked for an analysis that went beyond total sales and profit: specifically, which discount levels were actually eating into margin, and which categories and regions were carrying the business versus dragging it down — so pricing and discount policy could be adjusted with evidence rather than gut feel.</p>
+      </section>
+
+      <section id="s03">
+        <span class="eyebrow">03</span>
+        <h2 class="sec-title">Business Objectives</h2>
+        <ul class="plain check">
+          <li>Quantify total sales, profit, and overall margin across the full order base (9,994 records).</li>
+          <li>Break down sales and profit by product category and region to identify top and bottom performers.</li>
+          <li>Analyse profitability across discount bands to find the point where discounting stops paying off.</li>
+          <li>Package the findings into an interactive dashboard stakeholders can filter by Region, Category, Discount Range, and Order Date without needing to open Power BI or write SQL.</li>
+        </ul>
+      </section>
+
+      <section id="s04">
+        <span class="eyebrow">04</span>
+        <h2 class="sec-title">Dataset Overview</h2>
+        <dl class="meta-list">
+          <dt>Source</dt><dd>Sample Superstore dataset (Kaggle)</dd>
+          <dt>Records</dt><dd>9,994 order-level rows</dd>
+          <dt>Key fields</dt><dd>Category, Sub-Category, Segment, Region, State, City, Discount, Profit, Sales, Quantity, Customer ID, Product ID, Order Date, Ship Date</dd>
+          <dt>Structure</dt><dd>Star schema — DateTable, a Measures table (Total Sales, Total Profit, Profit Margin %, Total Orders, Avg Discount %, Loss-Making Orders, Average Order Value), and the Sample_Superstore fact table</dd>
+        </dl>
+      </section>
+
+      <section id="s05">
+        <span class="eyebrow">05</span>
+        <h2 class="sec-title">Data Cleaning</h2>
+        <p>The raw Superstore CSV had a character encoding issue — one column wasn't reading correctly in its original UTF-8 format, which corrupted values on load. The fix was to open the file in VS Code, identify the affected column, and re-save it with the correct encoding, resolving the corrupted values before the data was loaded into the analysis.</p>
+      </section>
+
+      <section id="s06">
+        <span class="eyebrow">06</span>
+        <h2 class="sec-title">Analysis Process</h2>
+        <p>Built eight core DAX measures on top of the star schema — continued practice for DAX as part of ongoing learning — combining Power BI and MySQL to calculate sales, profit, margin, and discount-impact metrics. Orders were grouped into discount bands (0%, 1–20%, 21–40%, 41%+) to isolate the point where profitability breaks down.</p>
+      </section>
+
+      <section id="s07">
+        <span class="eyebrow">07</span>
+        <h2 class="sec-title">Dashboard</h2>
+        <p>Three-page interactive dashboard — Executive Overview, Discount Deep Dive, and Customer &amp; Product Risk — filterable by Region, Category, Discount Range, and Order Date.</p>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="label">Total Records</div><div class="val">9,994</div></div>
+          <div class="stat-card"><div class="label">Total Sales</div><div class="val">R2,297,200.64</div></div>
+          <div class="stat-card pos"><div class="label">Total Profit</div><div class="val">R286,396.62</div></div>
+          <div class="stat-card"><div class="label">Overall Profit Margin</div><div class="val">12.47%</div></div>
+        </div>
+      </section>
+
+      <section id="s08">
+        <span class="eyebrow">08</span>
+        <h2 class="sec-title">Key Insights</h2>
+
+        <div class="insight-grid">
+          <div class="insight-card">
+            <div class="num">1</div>
+            <h4>Category Performance</h4>
+            <p>Technology generated the highest sales (R836,154.06) and the highest profit (R145,455.31). Furniture had the lowest profit (R18,451.18) despite comparable sales volume to Office Supplies.</p>
+          </div>
+          <div class="insight-card">
+            <div class="num">2</div>
+            <h4>Regional Performance</h4>
+            <p>West recorded the highest sales (R725,457.83) and the strongest profit margin (14.94%). South had the lowest sales (R391,721.83), while Central had the weakest margin (7.92%).</p>
+          </div>
+          <div class="insight-card">
+            <div class="num">3</div>
+            <h4>Discount Impact</h4>
+            <p>Profitability inverts sharply as discounting increases — average profit per order turns negative from the 21–40% band (–R77.86) and worsens at 41%+ (–R106.71).</p>
+          </div>
+          <div class="insight-card">
+            <div class="num">4</div>
+            <h4>Overall Margin</h4>
+            <p>R2,297,200.64 in total sales converts to just R286,396.62 in profit — a 12.47% blended margin, dragged down almost entirely by the deep-discount segment.</p>
+          </div>
+        </div>
+
+        <table class="dtable">
+          <tr><th>Discount Group</th><th>Records</th><th>Total Sales</th><th>Total Profit</th><th>Avg Profit</th></tr>
+          <tr><td>0%</td><td>4,798</td><td>R1,087,908.47</td><td class="pos-val">R320,987.14</td><td class="pos-val">R66.90</td></tr>
+          <tr><td>1–20%</td><td>3,803</td><td>R846,522.10</td><td class="pos-val">R100,785.74</td><td class="pos-val">R26.50</td></tr>
+          <tr><td>21–40%</td><td>460</td><td>R234,137.94</td><td class="neg">–R35,817.56</td><td class="neg">–R77.86</td></tr>
+          <tr><td>41%+</td><td>933</td><td>R128,632.13</td><td class="neg">–R99,558.70</td><td class="neg">–R106.71</td></tr>
+        </table>
+      </section>
+
+      <section id="s09">
+        <span class="eyebrow">09</span>
+        <h2 class="sec-title">Business Impact</h2>
+        <p>The core finding — that orders discounted above 20% average a negative profit per order — means a meaningful share of the order base isn't just low-margin, it's actively losing money on every sale. The 460 orders in the 21–40% band and 933 orders in the 41%+ band (1,393 orders combined, roughly 14% of all orders) together account for an estimated loss of around R135,376, currently being absorbed by the healthier 0% and 1–20% segments.</p>
+        <div class="impact-figure">
+          <div class="big">≈ R135,376</div>
+          <div class="small">Estimated annual loss from orders discounted above 20% — recoverable by capping discount policy</div>
+        </div>
+        <p>Capping discounts at 20% wouldn't just stop the bleeding — it would let that recovered margin drop straight back into overall profit, lifting the 12.47% blended margin without needing a single extra sale. The one risk to weigh: if the 21%+ tier is where price-sensitive customers convert, a hard cap could cost some of those 1,393 orders outright, which is why a phased rollout is worth testing before applying it store-wide.</p>
+      </section>
+
+      <section id="s10">
+        <span class="eyebrow">10</span>
+        <h2 class="sec-title">Recommendations</h2>
+        <ul class="plain check">
+          <li>Cap discounts at 20%, where average profit per order turns negative — the single highest-leverage fix, worth an estimated R135k in recovered margin.</li>
+          <li>Pilot the cap in one or two regions or categories first to confirm it doesn't suppress order volume before rolling out company-wide.</li>
+          <li>Investigate why Furniture underperforms on profit despite solid sales — a candidate for its own discount policy review, separate from the general cap.</li>
+          <li>Use Central's weak 7.92% margin, despite mid-tier sales, as a starting point for a regional pricing audit.</li>
+        </ul>
+      </section>
+
+      <section id="s11">
+        <span class="eyebrow">11</span>
+        <h2 class="sec-title">Technologies Used</h2>
+        <div class="tech-tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">DAX</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">JSON</span>
+        </div>
+      </section>
+
+      <section id="s12">
+        <span class="eyebrow">12</span>
+        <h2 class="sec-title">GitHub Repository</h2>
+        <p>Full analysis, DAX measures, and the interactive dashboard source are available in the project repository. The dashboard itself is live and filterable — no setup required.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;">
+          <a class="repo-final" href="https://github.com/BulelwaBisholo/Superstore-Sales-Analyses" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" style="width:17px;height:17px;fill:#fff;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+            0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01
+            1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+            0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.5 7.5 0 0 1 4 0c1.53-1.04
+            2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54
+            1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            View Repository on GitHub
+          </a>
+          <a class="dash-btn" href="https://bulelwabisholo.github.io/projects/superstore-sales.html" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+            View Interactive Dashboard
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+</body>
+</html>
