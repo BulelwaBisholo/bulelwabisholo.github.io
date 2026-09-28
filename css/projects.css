@@ -314,6 +314,9 @@
   background: var(--color-paper);
 }
 
+/* Styling for embedded dashboard screenshot and caption */
+.dashboard-placeholder img { display: none; }
+
 /* Key insight cards */
 .insights-grid {
   display: grid;
