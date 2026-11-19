@@ -331,27 +331,46 @@
           </article>
 
           <!-- 7. USER STORIES -->
-          <article class="case-section" id="user-stories">
+                   <article class="case-section" id="user-stories">
             <div class="case-section-head">
               <span class="case-section-num">07</span>
               <h2>User Stories</h2>
             </div>
             <div class="case-section-body">
-              <p>Nine user stories, each with Given/When/Then acceptance criteria. Three examples:</p>
-              <div class="insights-grid">
-                <div class="insight-card">
-                  <span class="num">US-01</span>
-                  <p>As a customer, I want to see the current payment status in transaction history so that I know what happened to my payment.</p>
-                </div>
-                <div class="insight-card">
-                  <span class="num">US-06</span>
-                  <p>As a customer, I want an unresolved payment investigated without repeatedly explaining the issue so that resolution is easier.</p>
-                </div>
-                <div class="insight-card">
-                  <span class="num">US-09</span>
-                  <p>As an Operations Manager, I want reporting on payment exceptions and status-related contacts so that I can monitor service performance.</p>
-                </div>
+              <p>
+                Nine user stories, each with acceptance criteria. Every story links back to a
+                business requirement in the traceability matrix below.
+              </p>
+              <div class="ba-table-wrap">
+                <table class="ba-table">
+                  <thead><tr><th>ID</th><th>As a…</th><th>I want to…</th><th>So that…</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>US-01</code></td><td>Customer</td><td>see the current payment status in transaction history</td><td>I know what happened to my payment</td></tr>
+                    <tr><td><code>US-02</code></td><td>Customer</td><td>see the payment details and reference</td><td>I can identify the transaction</td></tr>
+                    <tr><td><code>US-03</code></td><td>Customer</td><td>get proof of payment after success</td><td>I can share evidence of a completed payment</td></tr>
+                    <tr><td><code>US-04</code></td><td>Customer</td><td>receive an update when my payment status changes</td><td>I am not left uncertain</td></tr>
+                    <tr><td><code>US-05</code></td><td>Customer</td><td>get clear guidance when a payment fails</td><td>I know what action to take</td></tr>
+                    <tr><td><code>US-06</code></td><td>Customer</td><td>have an unresolved payment investigated without repeatedly explaining the issue</td><td>resolution is easier</td></tr>
+                    <tr><td><code>US-07</code></td><td>Payments Operations user</td><td>have a complete exception record</td><td>I can investigate and resolve payment issues efficiently</td></tr>
+                    <tr><td><code>US-08</code></td><td>Customer</td><td>know when funds will be released or returned after a bank-side payment error</td><td>I understand the resolution</td></tr>
+                    <tr><td><code>US-09</code></td><td>Operations Manager</td><td>see reporting on payment exceptions and status-related contacts</td><td>I can monitor service performance</td></tr>
+                  </tbody>
+                </table>
               </div>
+
+              <h3 class="ba-sub">Worked example: acceptance criteria for US-01</h3>
+              <p>
+                Acceptance criteria turn a story into something testable. These are the criteria
+                for the first story, and they feed directly into UAT-01 and UAT-02.
+              </p>
+              <ul class="ba-list">
+                <li><strong>Given</strong> a payment is processing, <strong>when</strong> I open its details, <strong>then</strong> the status displays Processing or Pending.</li>
+                <li><strong>Given</strong> authoritative confirmation of success is received, <strong>when</strong> the record refreshes, <strong>then</strong> the status displays Transaction successful.</li>
+                <li>The status must never display Successful before confirmation.</li>
+              </ul>
+              <p style="color: var(--color-slate); font-size: 14.5px; margin-top:12px;">
+                The acceptance criteria for all nine stories are in the full case study PDF.
+              </p>
             </div>
           </article>
 
