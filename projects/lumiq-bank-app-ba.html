@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LUMIQ Bank App BA Case Study — Bulelwa Bisholo</title>
+<meta name="description" content="Business analysis case study: improving payment confirmation and transaction-status visibility in a fictional digital bank, by Bulelwa Bisholo." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/projects.css" />
+
+<style>
+  /* Small additions for this page only */
+  .ba-note { border-left: 4px solid var(--color-accent, #d9822b); background: rgba(217,130,43,.08); padding: 14px 18px; border-radius: 8px; font-size: 14.5px; margin-bottom: 8px; }
+  .ba-table-wrap { overflow-x: auto; margin: 14px 0; }
+  .ba-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  .ba-table th, .ba-table td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(128,128,128,.25); vertical-align: top; }
+  .ba-table th { font-weight: 600; }
+  .ba-table code { font-size: 13px; }
+  .ba-figure { margin: 18px 0; }
+  .ba-figure img { width: 100%; height: auto; display: block; border-radius: var(--radius-md); background: #fff; padding: 12px; }
+  .ba-figure figcaption { margin-top: 8px; color: var(--color-slate); font-size: 13.5px; }
+  .ba-sub { margin: 22px 0 6px; font-size: 17px; }
+  .ba-list { padding-left: 20px; }
+  .ba-list li { margin-bottom: 6px; }
+  .ba-downloads { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+</style>
+</head>
+<body>
+
+<div class="preloader" data-preloader aria-hidden="true">
+  <div class="preloader-mark">
+    <svg viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="preloader-path" d="M2 32 L18 20 L30 26 L46 8 L62 16" />
+    </svg>
+    <span class="preloader-label">Loading case study…</span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="container">
+    <a href="../index.html" class="nav-logo"><span class="dot">●</span> Bulelwa Bisholo</a>
+    <nav class="nav-links" data-nav-links>
+      <a href="../index.html#home">Home</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#process">Process</a>
+      <a href="../index.html#skills">Skills</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="nav-burger" data-nav-burger aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================ PROJECT HERO ============================ -->
+  <section class="project-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="../index.html#projects">Case Studies</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg>
+        <span>LUMIQ Bank App BA</span>
+      </div>
+
+      <div class="project-hero-top">
+        <div>
+          <p class="eyebrow">Case Study 04 · Business Analysis</p>
+          <h1>LUMIQ Bank App</h1>
+          <p class="project-subtitle">
+            Improving payment confirmation and transaction-status visibility, so a
+            customer always knows whether a payment is processing, successful or
+            failed, and what to do next.
+          </p>
+          <div class="project-meta-row">
+            <span class="tool-chip secondary">Requirements</span>
+            <span class="tool-chip secondary">User Stories</span>
+            <span class="tool-chip secondary">Process Mapping</span>
+            <span class="tool-chip secondary">UAT</span>
+          </div>
+        </div>
+        <div class="project-hero-case" aria-hidden="true">04</div>
+      </div>
+
+      <div class="project-hero-actions">
+        <a href="lumiq-ba/LUMIQ_Business_Analysis_Case_Study.pdf" class="btn btn-primary" target="_blank" rel="noopener">Read the Full Case Study (PDF)</a>
+        <a href="https://github.com/BulelwaBisholo/LUMIQ-Bank-App-BA-Case-Study" class="btn btn-accent" target="_blank" rel="noopener">View Repository on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ PROJECT BODY ============================ -->
+  <section class="project-body">
+    <div class="container">
+      <div class="project-layout">
+
+        <aside class="project-toc">
+          <span class="toc-label">On this page</span>
+          <ol>
+            <li><a href="#business-problem">Business Problem</a></li>
+            <li><a href="#stakeholders">Stakeholders</a></li>
+            <li><a href="#objectives-scope">Objectives &amp; Scope</a></li>
+            <li><a href="#as-is">AS-IS Process</a></li>
+            <li><a href="#to-be">TO-BE Process</a></li>
+            <li><a href="#requirements">Requirements</a></li>
+            <li><a href="#user-stories">User Stories</a></li>
+            <li><a href="#traceability-uat">Traceability &amp; UAT</a></li>
+            <li><a href="#raid-kpis">RAID &amp; KPIs</a></li>
+            <li><a href="#recommendations">Recommendations</a></li>
+            <li><a href="#downloads">Downloads</a></li>
+          </ol>
+        </aside>
+
+        <div class="project-content">
+
+          <div class="ba-note">
+            <strong>Please note:</strong> LUMIQ Bank is fictional. This is a simulated business analysis
+            case study. The scenarios, stakeholders, targets and examples are illustrative, and no real
+            customer research or bank data was used.
+          </div>
+
+          <!-- 1. BUSINESS PROBLEM -->
+          <article class="case-section" id="business-problem">
+            <div class="case-section-head">
+              <span class="case-section-num">01</span>
+              <h2>Business Problem</h2>
+            </div>
+            <div class="case-section-body">
+              <p>
+                Customers of the fictional LUMIQ Bank App may not know whether a payment is
+                processing, successful, failed or awaiting investigation. When the status is
+                unclear or delayed, they may contact support, try the payment again, or lose
+                confidence in the service.
+              </p>
+              <h3 class="ba-sub">Business impact to investigate</h3>
+              <ul class="ba-list">
+                <li>Avoidable customer-support contacts about payment status.</li>
+                <li>Possible duplicate payments when customers can't tell if the first attempt worked.</li>
+                <li>Longer investigations when cases lack consistent status information or ownership.</li>
+                <li>Lower customer confidence, and possible complaints or attrition.</li>
+              </ul>
+              <p style="margin-top:14px;">
+                <strong>Opportunity:</strong> show the reliable status information the payment systems
+                already hold, define clear exception handling and ownership, and keep customers
+                updated until the payment is resolved.
+              </p>
+            </div>
+          </article>
+
+          <!-- 2. STAKEHOLDERS -->
+          <article class="case-section" id="stakeholders">
+            <div class="case-section-head">
+              <span class="case-section-num">02</span>
+              <h2>Stakeholders</h2>
+            </div>
+            <div class="case-section-body">
+              <div class="ba-table-wrap">
+                <table class="ba-table">
+                  <thead><tr><th>Stakeholder</th><th>What they need</th><th>How to engage</th></tr></thead>
+                  <tbody>
+                    <tr><td>Operations Manager</td><td>Fewer avoidable complaints; clear ownership and performance visibility</td><td>Manage closely on outcomes, exception rules and reporting</td></tr>
+                    <tr><td>Project Manager</td><td>Delivery within scope, timeline and budget</td><td>Manage closely; agree priorities and change control</td></tr>
+                    <tr><td>Developers / technical team</td><td>Clear, feasible requirements, status logic and error handling</td><td>Collaborate on feasibility and edge cases</td></tr>
+                    <tr><td>Payments Operations</td><td>A reliable investigation queue, ownership and evidence</td><td>Involve in process design and escalation rules</td></tr>
+                    <tr><td>Customer Support</td><td>Accurate information and clear customer guidance</td><td>Consult on enquiry drivers and hand-offs</td></tr>
+                    <tr><td>Customers</td><td>To know what happened, what to do next and when to expect an update</td><td>Validate through usability testing or surveys</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p style="color: var(--color-slate); font-size: 14.5px;">
+                These are proposed stakeholder roles for the simulation, not confirmed participants.
+                Interviews, surveys and workshops are proposed elicitation activities, not completed work.
+              </p>
+            </div>
+          </article>
+
+          <!-- 3. OBJECTIVES & SCOPE -->
+          <article class="case-section" id="objectives-scope">
+            <div class="case-section-head">
+              <span class="case-section-num">03</span>
+              <h2>Objectives &amp; Scope</h2>
+            </div>
+            <div class="case-section-body">
+              <ul class="objectives-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Give customers a clear, accurate status and timestamp for each payment.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Never show a successful outcome before success is confirmed.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Reduce avoidable status-related support contacts and repeat-payment attempts.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Create a consistent escalation and customer-update process for unresolved payments.</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>Give Operations measurable service indicators.</span>
+                </li>
+              </ul>
+              <div class="ba-table-wrap">
+                <table class="ba-table">
+                  <thead><tr><th>In scope</th><th>Out of scope</th></tr></thead>
+                  <tbody>
+                    <tr><td>Transaction history and status visibility</td><td>Redesigning the whole banking app</td></tr>
+                    <tr><td>Status definitions and transitions</td><td>Replacing core banking or payment rails</td></tr>
+                    <tr><td>Notifications for material status changes</td><td>Guaranteeing settlement within a fixed five minutes</td></tr>
+                    <tr><td>Exception handling, escalation and case updates</td><td>Integration design, vendor selection or deployment</td></tr>
+                    <tr><td>Duplicate-prevention controls for retries</td><td>Real customer research or operational measurement</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p style="color: var(--color-slate); font-size: 14.5px;">
+                A five-minute target was discussed as a service aspiration for the exception journey.
+                It needs validation with Payments Operations and technology teams and is not a
+                guaranteed settlement time.
+              </p>
+            </div>
+          </article>
+
+          <!-- 4. AS-IS -->
+          <article class="case-section" id="as-is">
+            <div class="case-section-head">
+              <span class="case-section-num">04</span>
+              <h2>AS-IS Process</h2>
+            </div>
+            <div class="case-section-body">
+              <p>
+                The assumed current state: a customer pays, downstream systems process it, but the
+                app's confirmation is delayed or unclear. The customer contacts support, support asks
+                Payments Operations to investigate, and the customer waits.
+              </p>
+              <figure class="ba-figure">
+                <img src="lumiq-ba/AS-IS.svg" alt="AS-IS process map: customer submits payment, app status is unclear, customer contacts support, Payments Operations investigates, customer receives an update, case closes." />
+                <figcaption>AS-IS process map (illustrative)</figcaption>
+              </figure>
+              <h3 class="ba-sub">Key gaps to address</h3>
+              <ul class="ba-list">
+                <li>No consistently visible status lifecycle for the customer.</li>
+                <li>No clear escalation deadline or service-level expectation.</li>
+                <li>No guaranteed proactive communication during investigation.</li>
+                <li>No explicit feedback loop after escalation.</li>
+                <li>Risk of unsafe retries when the first attempt's outcome is unknown.</li>
+              </ul>
+              <p style="color: var(--color-slate); font-size: 14.5px; margin-top:12px;">
+                The current-state process and gaps are hypotheses to validate, not verified facts about a real bank.
+              </p>
+            </div>
+          </article>
+
+          <!-- 5. TO-BE -->
+          <article class="case-section" id="to-be">
+            <div class="case-section-head">
+              <span class="case-section-num">05</span>
+              <h2>TO-BE Process</h2>
+            </div>
+            <div class="case-section-body">
+              <p>
+                The proposed future state uses the transaction record as the source for the customer's
+                status view. It separates processing, pending, successful and failed outcomes, never
+                shows success before authoritative confirmation, and gives unresolved payments a
+                controlled exception journey.
+              </p>
+              <figure class="ba-figure">
+                <img src="lumiq-ba/TO-BE.svg" alt="TO-BE process map: transaction reference created, authoritative status retrieved, Processing or Pending shown, then success, failure or a Payments Operations case with customer updates and funds return where applicable." />
+                <figcaption>TO-BE process map (proposed)</figcaption>
+              </figure>
+              <div class="ba-table-wrap">
+                <table class="ba-table">
+                  <thead><tr><th>Scenario</th><th>Proposed behaviour</th></tr></thead>
+                  <tbody>
+                    <tr><td>Processing</td><td>Show Processing or Pending with timestamp and reference; never Successful</td></tr>
+                    <tr><td>Confirmed success</td><td>Show Transaction successful; proof of payment available afterwards</td></tr>
+                    <tr><td>Failed</td><td>Show Failed with a plain-language reason where safe, and a clear next step</td></tr>
+                    <tr><td>Unresolved</td><td>Route to Payments Operations with an owner and a validated handling target</td></tr>
+                    <tr><td>Retry</td><td>Bounded retries with idempotency controls to prevent duplicates</td></tr>
+                    <tr><td>Funds need correction</td><td>Return or release funds to the original method where applicable, without a customer claim</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p><strong>Design principles:</strong> accurate status before reassurance, no false success, no duplicate transaction on retry, clear ownership, customer updates, auditability and minimal customer effort.</p>
+            </div>
+          </article>
+
+          <!-- 6. REQUIREMENTS -->
+          <article class="case-section" id="requirements">
+            <div class="case-section-head">
+              <span class="case-section-num">06</span>
+              <h2>Requirements</h2>
+            </div>
+            <div class="case-section-body">
+              <div class="dataset-grid">
+                <div class="dataset-stat"><span class="label">Business requirements</span><span class="value">4</span></div>
+                <div class="dataset-stat"><span class="label">Functional</span><span class="value">9</span></div>
+                <div class="dataset-stat"><span class="label">Non-functional</span><span class="value">6</span></div>
+                <div class="dataset-stat"><span class="label">Business rules</span><span class="value">6</span></div>
+              </div>
+              <div class="ba-table-wrap">
+                <table class="ba-table">
+                  <thead><tr><th>ID</th><th>Selected requirement</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>BR-01</code></td><td>Customers can understand the current status of a payment from transaction history.</td></tr>
+                    <tr><td><code>BR-03</code></td><td>Unresolved payment exceptions have clear operational ownership and a trackable resolution path.</td></tr>
+                    <tr><td><code>FR-03</code></td><td>The app displays Successful only after authoritative confirmation.</td></tr>
+                    <tr><td><code>FR-05</code></td><td>Status refresh and retry run in a controlled way, without creating duplicate transactions.</td></tr>
+                    <tr><td><code>NFR-01</code></td><td>Transaction details load within 3 seconds under agreed test conditions (target to be confirmed with technical stakeholders).</td></tr>
+                    <tr><td><code>RULE-01</code></td><td>A payment is never labelled Successful until authoritative success confirmation is received.</td></tr>
+                    <tr><td><code>RULE-03</code></td><td>A retry must be bounded and use a stable transaction identifier to prevent duplicate processing.</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p style="color: var(--color-slate); font-size: 14.5px;">The full catalogue is in the case study PDF.</p>
+            </div>
+          </article>
+
+          <!-- 7. USER STORIES -->
+          <article class="case-section" id="user-stories">
+            <div class="case-section-head">
+              <span class="case-section-num">07</span>
+              <h2>User Stories</h2>
+            </div>
+            <div class="case-section-body">
+              <p>Nine user stories, each with Given/When/Then acceptance criteria. Three examples:</p>
+              <div class="insights-grid">
+                <div class="insight-card">
+                  <span class="num">US-01</span>
+                  <p>As a customer, I want to see the current payment status in transaction history so that I know what happened to my payment.</p>
+                </div>
+                <div class="insight-card">
+                  <span class="num">US-06</span>
+                  <p>As a customer, I want an unresolved payment investigated without repeatedly explaining the issue so that resolution is easier.</p>
+                </div>
+                <div class="insight-card">
+                  <span class="num">US-09</span>
+                  <p>As an Operations Manager, I want reporting on payment exceptions and status-related contacts so that I can monitor service performance.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8. TRACEABILITY & UAT -->
+          <article class="case-section" id="traceability-uat">
+            <div class="case-section-head">
+              <span class="case-section-num">08</span>
+              <h2>Traceability &amp; UAT</h2>
+            </div>
+            <div class="case-section-body">
+              <p>
+                A Requirements Traceability Matrix links every business requirement to functional
+                requirements, user stories and UAT scenarios, so nothing is built or tested without a reason.
+              </p>
+              <div class="ba-table-wrap">
+                <table class="ba-table">
+                  <thead><tr><th>Business req.</th><th>Functional</th><th>User stories</th><th>Validation</th></tr></thead>
+                  <tbody>
+                    <tr><td>BR-01</td><td>FR-01, FR-02, FR-03</td><td>US-01, US-02</td><td>UAT-01, UAT-02</td></tr>
+                    <tr><td>BR-01</td><td>FR-04</td><td>US-03</td><td>UAT-03</td></tr>
+                    <tr><td>BR-02</td><td>FR-05, FR-07</td><td>US-04, US-05</td><td>UAT-04, UAT-05</td></tr>
+                    <tr><td>BR-03</td><td>FR-06, FR-09</td><td>US-06, US-07</td><td>UAT-06</td></tr>
+                    <tr><td>BR-04</td><td>FR-07, FR-08</td><td>US-04, US-06, US-08</td><td>UAT-04, UAT-06, UAT-07</td></tr>
+                    <tr><td>BR-02</td><td>FR-09 + reporting definition</td><td>US-09</td><td>UAT-08</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p>
+                Eight UAT scenarios are proposed. The first learning point: a Processing or Pending
+                payment must never display Successful, so UAT-01 fails if it does. Results are only
+                marked Pass or Fail after execution against a defined test environment with evidence.
+              </p>
+            </div>
+          </article>
+
+          <!-- 9. RAID & KPIs -->
+          <article class="case-section" id="raid-kpis">
+            <div class="case-section-head">
+              <span class="case-section-num">09</span>
+              <h2>RAID &amp; KPIs</h2>
+            </div>
+            <div class="case-section-body">
+              <h3 class="ba-sub">RAID highlights</h3>
+              <ul class="ba-list">
+                <li><strong>Risk:</strong> status data may be delayed or inconsistent across payment services, so the customer sees the wrong status.</li>
+                <li><strong>Risk:</strong> retry logic could create duplicate payments, so use idempotency controls and bounded retries.</li>
+                <li><strong>Assumption:</strong> a reliable transaction reference and status history are available or can be exposed.</li>
+                <li><strong>Dependency:</strong> payment service/API capability and notification infrastructure.</li>
+              </ul>
+              <h3 class="ba-sub">Success measures</h3>
+              <p>
+                Status-related contact rate, payment exception rate, escalation rate, time to resolution,
+                proactive update coverage, duplicate payment incident rate and customer satisfaction after resolution.
+              </p>
+              <p style="color: var(--color-slate); font-size: 14.5px;">
+                No baseline values or improvement percentages are claimed. Baselines come first, then targets agreed with the business owner.
+              </p>
+            </div>
+          </article>
+
+          <!-- 10. RECOMMENDATIONS -->
+          <article class="case-section" id="recommendations">
+            <div class="case-section-head">
+              <span class="case-section-num">10</span>
+              <h2>Recommendations</h2>
+            </div>
+            <div class="case-section-body">
+              <div class="recommendations-list">
+                <div class="recommendation-item">
+                  <span class="rec-index">01</span>
+                  <p>Validate the current payment lifecycle and the authoritative status source with Payments Operations and Engineering.</p>
+                </div>
+                <div class="recommendation-item">
+                  <span class="rec-index">02</span>
+                  <p>Agree a controlled status vocabulary and transition rules, including timeouts and ambiguous outcomes.</p>
+                </div>
+                <div class="recommendation-item">
+                  <span class="rec-index">03</span>
+                  <p>Prioritise status accuracy and transaction-detail visibility before advanced notification features.</p>
+                </div>
+                <div class="recommendation-item">
+                  <span class="rec-index">04</span>
+                  <p>Design retry and duplicate-prevention controls with technical and risk stakeholders.</p>
+                </div>
+                <div class="recommendation-item">
+                  <span class="rec-index">05</span>
+                  <p>Prototype the transaction-detail experience, test it with customers and support staff, then run UAT on normal, failed, delayed, duplicate-attempt and recovery scenarios.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 11. DOWNLOADS -->
+          <article class="case-section" id="downloads">
+            <div class="case-section-head">
+              <span class="case-section-num">11</span>
+              <h2>Downloads &amp; Repository</h2>
+            </div>
+            <div class="case-section-body">
+              <div class="repo-cta">
+                <div class="repo-cta-text">
+                  <h3>Explore the full case study</h3>
+                  <p>The full document, executive overview, process maps, requirements and UAT artefacts.</p>
+                </div>
+                <a href="https://github.com/BulelwaBisholo/LUMIQ-Bank-App-BA-Case-Study" class="btn btn-accent" target="_blank" rel="noopener">View on GitHub</a>
+              </div>
+              <div class="ba-downloads">
+                <a href="lumiq-ba/LUMIQ_Business_Analysis_Case_Study.pdf" class="btn btn-primary" target="_blank" rel="noopener">Case Study (PDF)</a>
+                <a href="lumiq-ba/LUMIQ_Business_Analysis_Case_Study.docx" class="btn btn-primary" download>Case Study (Word)</a>
+                <a href="lumiq-ba/LUMIQ_Executive_Overview.pptx" class="btn btn-primary" download>Executive Overview (PowerPoint)</a>
+              </div>
+            </div>
+          </article>
+
+          <div class="project-pagination">
+            <a href="superstore-sales.html" class="pagination-link prev">
+              <span class="dir">Previous Case Study</span>
+              <span class="title">← Superstore Sales Analysis</span>
+            </a>
+            <a href="../index.html#projects" class="pagination-link next">
+              <span class="dir">Back to</span>
+              <span class="title">All Case Studies →</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="nav-logo"><span class="dot">●</span> Bulelwa Bisholo</div>
+        <p>Data Analyst turning business questions into data-driven answers.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <a href="../index.html#home">Home</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#process">Process</a>
+          <a href="../index.html#skills">Skills</a>
+          <a href="../index.html#projects">Projects</a>
+        </div>
+        <div class="footer-col">
+          <h4>Case Studies</h4>
+          <a href="home-credit-writeup.html">Home Credit Risk</a>
+          <a href="sa-bank-churn-writeup.html">Customer Churn</a>
+          <a href="superstore-sales.html">Superstore Sales</a>
+          <a href="lumiq-bank-app-ba.html">LUMIQ Bank App BA</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span data-current-year></span> Bulelwa Bisholo. Built with HTML, CSS &amp; JavaScript.</p>
+      <div class="footer-social">
+        <a href="https://github.com/BulelwaBisholo" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.8 5.4.8 11.7c0 5 3.2 9.2 7.7 10.7.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.3-3.8-1.3-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 1.7 2.6 1.2 3.2.9.1-.7.4-1.2.7-1.5-2.5-.3-5.1-1.2-5.1-5.5 0-1.2.4-2.2 1.1-3-.1-.3-.5-1.4.1-3 0 0 .9-.3 3 1.1a10.4 10.4 0 0 1 5.5 0c2.1-1.4 3-1.1 3-1.1.6 1.6.2 2.7.1 3 .7.8 1.1 1.8 1.1 3 0 4.3-2.6 5.2-5.1 5.5.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.7-5.7 7.7-10.7C23.2 5.4 18.3.5 12 .5Z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/bulelwabisholo" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.15 1.45-2.15 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
+        </a>
+        <a href="mailto:bulelwabisholo@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-to-top" data-back-to-top aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
