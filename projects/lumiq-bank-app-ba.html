@@ -375,15 +375,21 @@
           </article>
 
           <!-- 8. TRACEABILITY & UAT -->
-          <article class="case-section" id="traceability-uat">
+                  <article class="case-section" id="traceability-uat">
             <div class="case-section-head">
               <span class="case-section-num">08</span>
               <h2>Traceability &amp; UAT</h2>
             </div>
             <div class="case-section-body">
               <p>
-                A Requirements Traceability Matrix links every business requirement to functional
-                requirements, user stories and UAT scenarios, so nothing is built or tested without a reason.
+                A Requirements Traceability Matrix (RTM) links every business requirement to
+                functional requirements, user stories and UAT scenarios, so nothing is built or
+                tested without a reason, and nothing is left untested.
+              </p>
+              <p>
+                <strong>How to read it:</strong> follow one row across. For example, BR-01 (customers
+                understand their payment status) leads to FR-03 (show Successful only after
+                confirmation), which is delivered by US-01 and checked by UAT-01.
               </p>
               <div class="ba-table-wrap">
                 <table class="ba-table">
@@ -398,10 +404,27 @@
                   </tbody>
                 </table>
               </div>
-              <p>
-                Eight UAT scenarios are proposed. The first learning point: a Processing or Pending
-                payment must never display Successful, so UAT-01 fails if it does. Results are only
-                marked Pass or Fail after execution against a defined test environment with evidence.
+
+              <h3 class="ba-sub">User Acceptance Testing scenarios</h3>
+              <div class="ba-table-wrap">
+                <table class="ba-table">
+                  <thead><tr><th>Test</th><th>Scenario</th><th>Expected result</th><th>Evidence / fails if</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>UAT-01</code></td><td>Status accuracy while processing</td><td>App shows Processing/Pending, details are visible, and load time is within the 3-second test target</td><td>Fails if the app displays Successful</td></tr>
+                    <tr><td><code>UAT-02</code></td><td>Confirmed successful payment</td><td>Status changes to Transaction successful only after confirmation</td><td>Capture status and event timestamps</td></tr>
+                    <tr><td><code>UAT-03</code></td><td>Proof of payment availability</td><td>Proof of payment can be retrieved from transaction history</td><td>Verify document details and reference</td></tr>
+                    <tr><td><code>UAT-04</code></td><td>Status-change notification</td><td>One appropriate notification is sent; duplicates for the same event are suppressed</td><td>Check event ID and delivery log</td></tr>
+                    <tr><td><code>UAT-05</code></td><td>Failed payment guidance</td><td>App shows Failed and a safe, clear next step</td><td>Verify no misleading success message</td></tr>
+                    <tr><td><code>UAT-06</code></td><td>Unresolved payment escalation</td><td>Case is routed to Payments Operations with reference, owner and status</td><td>Verify case record and audit trail</td></tr>
+                    <tr><td><code>UAT-07</code></td><td>Funds correction update</td><td>Customer gets an accurate progress update; return or release follows the approved rule</td><td>Verify original-method handling</td></tr>
+                    <tr><td><code>UAT-08</code></td><td>Operations reporting</td><td>Report correctly categorises enquiries, escalations and resolution time</td><td>Reconcile report totals to source records</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p style="color: var(--color-slate); font-size: 14.5px;">
+                These are proposed scenarios. A result is only marked Pass or Fail after it runs in a
+                defined test environment with evidence. Business users define acceptance, defects get a
+                severity, owner and retest status, and unresolved critical defects block sign-off.
               </p>
             </div>
           </article>
